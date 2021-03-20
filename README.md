@@ -1,7 +1,4 @@
 
-
-
-
 # Project Requirements
 
 * Use Node.js and Express.js to create a RESTful API

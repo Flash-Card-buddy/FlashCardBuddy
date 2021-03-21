@@ -1,0 +1,34 @@
+<article>
+  <a href="/dashboard"> &larr; Back to Dashboard</a>
+  <h2>
+    Edit Deck
+  </h2>
+  <form class="edit-deck-form">
+    <div>
+      <input name="deck-title" type="text" value="{{deck.title}}" />
+      <span>({{format_url deck.post_url}})</span>
+    </div>
+    <div>
+      {{deck.vote_count}} {{format_plural "point" deck.vote_count}} by you on {{format_date deck.created_at}}
+      |
+      <a href="/deck/{{deck.id}}">{{deck.comments.length}} {{format_plural "comment" deck.comments.length}}</a>
+    </div>
+    <button type="submit">Save Deck</button>
+    <button type="button" class="delete-deck-btn">Delete Deck</button>
+  </form>
+</article>
+
+{{!-- Do we want to allow comments on the decks? Like a review? --}}
+<form class="comment-form">
+  <div>
+    <textarea name="comment-body"></textarea>
+  </div>
+
+  <div>
+    <button type="submit">add comment</button>
+  </div>
+</form>
+
+<script src="/javascript/edit-deck.js"></script>
+<script src="/javascript/delete-deck.js"></script>
+<script src="/javascript/comment.js"></script>

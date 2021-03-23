@@ -4,13 +4,12 @@ const { Post, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 
-//change post_url to ??? 
+
 router.get('/',withAuth, (req, res) => {
   console.log('======================');
   Post.findAll({
     attributes: [
-      'id',
-      'post_url',
+      'id',      
       'title',
       'created_at',
     ],
@@ -43,8 +42,7 @@ router.get('/:id', withAuth, (req, res) => {
       id: req.params.id
     },
     attributes: [
-      'id',
-      'post_url',
+      'id',      
       'title',
       'created_at',
     ],

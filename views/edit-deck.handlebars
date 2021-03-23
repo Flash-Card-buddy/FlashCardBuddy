@@ -1,24 +1,21 @@
 <article>
   <a href="/dashboard"> &larr; Back to Dashboard</a>
   <h2>
-    Edit Deck
+    Edit post
   </h2>
-  <form class="edit-deck-form">
+  <form class="edit-post-form">
     <div>
-      <input name="deck-title" type="text" value="{{deck.title}}" />
-      <span>({{format_url deck.post_url}})</span>
+      <input name="post-title" type="text" value="{{post.title}}" />      
     </div>
-    <div>
-      {{deck.vote_count}} {{format_plural "point" deck.vote_count}} by you on {{format_date deck.created_at}}
-      |
-      <a href="/deck/{{deck.id}}">{{deck.comments.length}} {{format_plural "comment" deck.comments.length}}</a>
+    <div>      
+      <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
     </div>
-    <button type="submit">Save Deck</button>
-    <button type="button" class="delete-deck-btn">Delete Deck</button>
+    <button type="submit">Save post</button>
+    <button type="button" class="delete-post-btn">Delete post</button>
   </form>
 </article>
 
-{{!-- Do we want to allow comments on the decks? Like a review? --}}
+{{!-- Do we want to allow comments on the posts? Like a review? --}}
 <form class="comment-form">
   <div>
     <textarea name="comment-body"></textarea>
@@ -29,6 +26,6 @@
   </div>
 </form>
 
-<script src="/javascript/edit-deck.js"></script>
-<script src="/javascript/delete-deck.js"></script>
+<script src="/javascript/edit-post.js"></script>
+<script src="/javascript/delete-post.js"></script>
 <script src="/javascript/comment.js"></script>

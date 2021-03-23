@@ -2,7 +2,7 @@
 const Post = require('./Post');
 const User = require('./User');
 const Comment = require('./Comment');
-const Friend = require('./Friend')
+// const Friend = require('./Friend')
 
 // create associations
 // need to add Friend associations
@@ -30,11 +30,12 @@ Post.hasMany(Comment, {
   foreignKey: 'post_id'
 });
 
-Friend.belongsTo(User, {
-  foreignKey: 'user_id'
-})
+// Friend.belongsTo(User, {
+//   foreignKey: 'user_id'
+// })
 
-User.hasMany(Friend, {
-  foreignKey: 'friend_id'
-})
-module.exports = { User, Post, Comment, Friend };
+// User.hasMany(Friend, {
+//   foreignKey: 'friend_id'
+// })
+
+module.exports = { User, Post, Comment};

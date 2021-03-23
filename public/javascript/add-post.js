@@ -1,10 +1,10 @@
 async function newFormHandler(event) {
   event.preventDefault();
 
-  const title = document.querySelector('input[name="deck-title"]').value;  
+  const title = document.querySelector('input[name="post-title"]').value;  
 
   const response = await fetch(`/api/posts`, {
-    method: 'deck',
+    method: 'post',
     body: JSON.stringify({
       title,
       text: ""
@@ -21,4 +21,4 @@ async function newFormHandler(event) {
   }
 }
 
-document.querySelector('.new-deck-form').addEventListener('submit', newFormHandler);
+document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);

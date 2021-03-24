@@ -18,6 +18,7 @@ async function signupFormHandler(event) {
     // check the response status
     if (response.ok) {
       console.log("::looks at camera:: I'm in..");
+    document.location.replace('/dashboard');
     } else {
       alert(response.statusText);
     }

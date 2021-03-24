@@ -1,21 +1,5 @@
 <section>
-  <h2>Create a New Card post</h2>
-
-  <form class="new-post-form">
-    <div>
-      <label for="post-title">Title</label>
-      <input type="text" id="post-title" name="post-title" />
-    </div>
-    <div>
-      {{!-- Will need to update this section to edit the cards --}}
-      <label for="post-text">Enter card data here:</label>
-      <input id="post-text" name="post-text" type="text"/>
-    </div>
-    <button type="submit" class="btn">Create</button>
-    {{!-- Will need to re-write line 16 to allow search field for friend's email to be searched and then added to their dashboard list --}}
-
-    {{!-- <input type="text" class="form-control" id="friendId" placeholder="Please enter your friend's email" /> --}}
-  </form>
+  <h2 class="post-new"><a href="/dashboard/new/" >Create a New Post</a></h2>
 </section>
 
 {{#if posts.length}}
@@ -32,5 +16,3 @@
 </section>
 {{/if}}
 
-<script src="/javascript/add-post.js"></script>
-{{!-- <script src="/javascript/edit-deck.js"></script> --}}

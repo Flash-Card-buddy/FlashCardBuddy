@@ -1,0 +1,19 @@
+:root {
+  --primary-color: #076fc4;
+  --secondary-color: #010006;
+  --tertiary-color: #506CF0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1%;
+  background-color: var(--secondary-color);
+  border-bottom: 1px solid var(--tertiary-color);
+  text-shadow: 1px 2px var(--secondary-color);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+}

@@ -11,7 +11,7 @@ router.get("/", withAuth, (req, res) => {
       // use the ID from the session
       user_id: req.session.user_id,
     },
-    attributes: ["id", "post", "title", "created_at"],
+    attributes: ["id", "post_text", "title", "created_at"],
     include: [
       {
         model: Comment,
@@ -38,11 +38,8 @@ router.get("/", withAuth, (req, res) => {
 });
 
 router.get("/edit/:id", withAuth, (req, res) => {
-  Post.findOne({
-    where: {
-      id: req.params.id,
-    },
-    attributes: ["id", "post", "title", "created_at"],
+  Post.findByPk( req.params.id, {
+    attributes: ["id", "post_text", "title", "created_at"],
     include: [
       {
         model: Comment,
@@ -60,22 +57,21 @@ router.get("/edit/:id", withAuth, (req, res) => {
   })
     .then((dbPostData) => {
       if (!dbPostData) {
-        res.status(404).json({ message: "There's no post found with that id" });
-        return;
-      }
-      const post = dbPostData.get({ plain: true });
+        const post = dbPostData.get({ plain: true });
 
-      res.render("edit-post", {
-        post,
-        loggedIn: true,
-      });
+        res.render("edit-post", {
+          post,
+          loggedIn: true,
+        });
+      } else {
+        res.status(404).end();
+      }
     })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
-
 
 router.get("/new/", withAuth, (req, res) => {
   res.render("new-post", {

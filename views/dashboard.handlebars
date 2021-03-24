@@ -8,12 +8,13 @@
     </div>
     <div>
       {{!-- Will need to update this section to edit the cards and not the URL --}}
-      <label for="post-url">Link</label>
-      <input id="post-url" name="post-url" />
+      <label for="post-text">Enter card data here:</label>
+      <input id="post-text" name="post-text" type="text"/>
     </div>
     <button type="submit" class="btn">Create</button>
     {{!-- Will need to re-write line 16 to allow search field for friend's email to be searched and then added to their dashboard list --}}
-    <input type="text" class="form-control" id="friendId" placeholder="Please enter your friend's email" />
+
+    {{!-- <input type="text" class="form-control" id="friendId" placeholder="Please enter your friend's email" /> --}}
   </form>
 </section>
 
@@ -32,3 +33,4 @@
 {{/if}}
 
 <script src="/javascript/add-post.js"></script>
+<script src="/javascript/edit-post.js"></script>

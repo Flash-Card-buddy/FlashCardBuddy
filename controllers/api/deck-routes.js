@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     attributes: [
       'id',   
       'deck_name',  
-      'title',
+      'user_id',
       'created_at',
     ],
     include: [
@@ -42,7 +42,7 @@ router.get('/:id', withAuth, (req, res) => {
     attributes: [
       'id',  
       'deck_name',    
-      'title',
+      'user_id',
       'created_at',
     ],
     include: [

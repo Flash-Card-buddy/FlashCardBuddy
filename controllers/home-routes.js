@@ -50,11 +50,11 @@ router.get("/deck/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "deck_name", "title", "created_at"],
+    attributes: ["id", "deck_name", "created_at"],
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "deck_name", "user_id", "created_at"],
+        attributes: ["id", "comment_text", "deck_id", "user_id", "created_at"],
         include: {
           model: User,
           attributes: ["username"],

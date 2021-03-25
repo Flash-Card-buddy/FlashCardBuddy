@@ -1,13 +1,13 @@
 async function newFormHandler(event) {
   event.preventDefault();
 
-  const deck = document.querySelector('input[name="deck-name"]').value;
+  const deck_name = document.querySelector('input[name="deck-name"]').value;
   
 
   const response = await fetch(`/api/deck`, {
     method: 'POST',
     body: JSON.stringify({
-      deck      
+      deck_name     
     }),
     headers: {
       'Content-Type': 'application/json'

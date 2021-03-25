@@ -15,7 +15,7 @@ router.get("/", withAuth, (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "deck_name", "user_id", "created_at"],
+        attributes: ["id", "comment_text", "deck_id", "user_id", "created_at"],
         include: {
           model: User,
           attributes: ["username"],
@@ -74,7 +74,7 @@ router.get("/edit/:id", withAuth, (req, res) => {
 });
 
 router.get("/new/", withAuth, (req, res) => {
-  res.render("new-deck", {
+  res.render("new-deck-form", {
     loggedIn: true,
   });
 });

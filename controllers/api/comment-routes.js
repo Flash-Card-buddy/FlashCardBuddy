@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     });
 });
   
-router.deck('/', withAuth, (req, res) => {
+router.post('/', withAuth, (req, res) => {
   // check the session
   if (req.session) {
     Comment.create({

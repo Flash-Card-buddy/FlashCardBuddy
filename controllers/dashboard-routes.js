@@ -2,20 +2,20 @@ const router = require("express").Router();
 const sequelize = require('../config/connection');
 //Provides requirement of being logged in (withAuth) to access certain features of blog
 const withAuth = require("../utils/auth");
-const { Post, User, Comment } = require("../models");
+const { Deck, User, Comment } = require("../models");
 
 //Prevents users from accessing Dashboard w/out being logged in
 router.get("/", withAuth, (req, res) => {
-  Post.findAll({
+  Deck.findAll({
     where: {
       // use the ID from the session
       user_id: req.session.user_id,
     },
-    attributes: ["id", "post_text", "title", "created_at"],
+    attributes: ["id", "deck_name", "user_id",  "created_at"],
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        attributes: ["id", "comment_text", "deck_name", "user_id", "created_at"],
         include: {
           model: User,
           attributes: ["username"],
@@ -27,9 +27,9 @@ router.get("/", withAuth, (req, res) => {
       },
     ],
   })
-    .then((dbPostData) => {
-      const posts = dbPostData.map((post) => post.get({ plain: true }));
-      res.render("dashboard", { posts, loggedIn: true });
+    .then((dbDeckData) => {
+      const decks = dbDeckData.map((deck) => deck.get({ plain: true }));
+      res.render("dashboard", { decks, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);
@@ -38,12 +38,12 @@ router.get("/", withAuth, (req, res) => {
 });
 
 router.get("/edit/:id", withAuth, (req, res) => {
-  Post.findByPk( req.params.id, {
-    attributes: ["id", "post_text", "title", "created_at"],
+  Deck.findByPk( req.params.id, {
+    attributes: ["id", "deck_name", "user_id", "created_at"],
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        attributes: ["id", "comment_text", "deck_name", "user_id", "created_at"],
         include: {
           model: User,
           attributes: ["username"],
@@ -55,12 +55,12 @@ router.get("/edit/:id", withAuth, (req, res) => {
       },
     ],
   })
-    .then((dbPostData) => {
-      if (dbPostData) {
-        const post = dbPostData.get({ plain: true });
+    .then((dbDeckData) => {
+      if (dbDeckData) {
+        const deck = dbDeckData.get({ plain: true });
 
-        res.render("edit-post", {
-          post,
+        res.render("edit-deck", {
+          deck,
           loggedIn: true,
         });
       } else {
@@ -74,7 +74,7 @@ router.get("/edit/:id", withAuth, (req, res) => {
 });
 
 router.get("/new/", withAuth, (req, res) => {
-  res.render("new-post", {
+  res.render("new-deck", {
     loggedIn: true,
   });
 });

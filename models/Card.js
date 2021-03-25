@@ -1,9 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+// create our Post model
+class Card extends Model {}
 
-class Comment extends Model {}
-
-Comment.init(
+// create fields/columns for Post model
+Card.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,34 +12,36 @@ Comment.init(
       primaryKey: true,
       autoIncrement: true
     },
-    comment_text: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1,500]
-      }
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id'
-      }
-    },
     deck_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: 'deck',
         key: 'id'
+      }      
+    },
+    card_front: {
+      type: DataTypes.TEXT, 
+      allowNull: false,
+      validate: {
+        len: [1,280]
+      }
+    },
+    card_back: {
+      type: DataTypes.TEXT, 
+      allowNull: false,
+      validate: {
+        len: [1,280]
       }
     }
+    
   },
   {
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'comment'
+    modelName: 'card'
   }
 );
 
-module.exports = Comment;
+module.exports = Card;

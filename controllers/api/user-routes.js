@@ -1,9 +1,9 @@
-const router = require("express").Router();
-const { User, Post, Comment } = require("../../models");
+const router = require('express').Router();
+const { User, Card, Comment } = require('../../models');
 
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
   User.findAll({
-    attributes: { exclude: ["password"] },
+    attributes: { exclude: ['password'] },
   })
     .then((dbUserData) => res.json(dbUserData))
     .catch((err) => {
@@ -12,23 +12,23 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/:id", (req, res) => {
+router.get('/:id', (req, res) => {
   User.findOne({
-    attributes: { exclude: ["password"] },
+    attributes: { exclude: ['password'] },
     where: {
       id: req.params.id,
     },
     include: [
       {
-        model: Post,
-        attributes: ["id", "title", "post_text", "created_at"],
+        model: Deck,
+        attributes: ['id', 'comment_text', 'deck_id', 'user_id', 'created_at'],
       },
       {
         model: Comment,
-        attributes: ["id", "comment_text", "created_at"],
+        attributes: ['id', 'comment_text', 'created_at'],
         include: {
-          model: Post,
-          attributes: ["title"],
+          model: Deck,
+          attributes: ['name'],
         },
       },
     ],
@@ -46,7 +46,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {  
+router.post('/', (req, res) => {  
   User.create({
     username: req.body.username,
     email: req.body.email,
@@ -67,7 +67,7 @@ router.post("/", (req, res) => {
     });
 });
 
-router.post("/login", (req, res) => {  
+router.post('/login', (req, res) => {  
   User.findOne({
     where: {
       email: req.body.email,
@@ -81,7 +81,7 @@ router.post("/login", (req, res) => {
     const validPassword = dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
-      res.status(400).json({ message: "Incorrect password, please try again." });
+      res.status(400).json({ message: 'Incorrect password, please try again.' });
       return;
     }
 
@@ -90,12 +90,12 @@ router.post("/login", (req, res) => {
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
 
-      res.json({ user: dbUserData, message: "Welcome to the Grid™, I am Tron your guide. I will fight for you" });
+      res.json({ user: dbUserData, message: 'Welcome to the Grid™, I am Tron your guide. I will fight for you' });
     });
   });
 });
 
-router.post("/logout", (req, res) => {
+router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -105,7 +105,7 @@ router.post("/logout", (req, res) => {
   }
 });
 
-router.put("/:id", (req, res) => {
+router.put('/:id', (req, res) => {
   User.update(req.body, {
     individualHooks: true,
     where: {
@@ -126,7 +126,7 @@ router.put("/:id", (req, res) => {
 });
 
 
-router.delete("/:id", (req, res) => {
+router.delete('/:id', (req, res) => {
   User.destroy({
     where: {
       id: req.params.id,
@@ -134,7 +134,7 @@ router.delete("/:id", (req, res) => {
   })
     .then((dbUserData) => {
       if (!dbUserData) {
-        res.status(404).json({ message: "We cannot delete what is not in our database, please check the ID and try again." });
+        res.status(404).json({ message: 'We cannot delete what is not in our database, please check the ID and try again.' });
         return;
       }
       res.json(dbUserData);

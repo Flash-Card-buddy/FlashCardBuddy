@@ -1,16 +1,17 @@
 // import all models
-const Post = require('./Post');
+const Deck = require('./Deck');
 const User = require('./User');
 const Comment = require('./Comment');
+const Card = require('./Card');
 // const Friend = require('./Friend')
 
 // create associations
 // need to add Friend associations
-User.hasMany(Post, {
+User.hasMany(Deck, {
   foreignKey: 'user_id'
 });
 
-Post.belongsTo(User, {
+Deck.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
@@ -18,17 +19,22 @@ Comment.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
-Comment.belongsTo(Post, {
-  foreignKey: 'post_id'
+Comment.belongsTo(Deck, {
+  foreignKey: 'deck_id'
 });
 
 User.hasMany(Comment, {
   foreignKey: 'user_id'
 });
 
-Post.hasMany(Comment, {
-  foreignKey: 'post_id'
+Deck.hasMany(Comment, {
+  foreignKey: 'deck_id'
 });
+
+Deck.hasMany(Card, {
+  foreignKey: 'deck_id'
+});
+
 
 // Friend.belongsTo(User, {
 //   foreignKey: 'user_id'
@@ -38,4 +44,4 @@ Post.hasMany(Comment, {
 //   foreignKey: 'friend_id'
 // })
 
-module.exports = { User, Post, Comment};
+module.exports = { User, Deck, Comment, Card};

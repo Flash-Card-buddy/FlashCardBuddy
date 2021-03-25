@@ -1,10 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 // create our Post model
-class Post extends Model {}
+class Deck extends Model {}
 
 // create fields/columns for Post model
-Post.init(
+Deck.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -12,25 +12,19 @@ Post.init(
       primaryKey: true,
       autoIncrement: true
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 30]
-      }
-    },
-    post_text: {
-      type: DataTypes.TEXT, 
-      allowNull: false,
-      validate: {
-        len: [1,280]
-      }
-    },
     user_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: 'user',
         key: 'id'
+      }      
+    },
+    deck_name: {
+      type: DataTypes.TEXT, 
+      allowNull: false,
+      validate: {
+        len: [1,30]
       }
     }
   },
@@ -38,8 +32,8 @@ Post.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'post'
+    modelName: 'deck'
   }
 );
 
-module.exports = Post;
+module.exports = Deck;

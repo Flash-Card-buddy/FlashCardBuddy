@@ -1,19 +1,119 @@
 :root {
-    --primary-color: #076fc4;
-    --secondary-color: #010006;
-    --tertiary-color: #506CF0;
-  }
+  --primary-color: #076fc4;
+  --secondary-color: #010006;
+  --tertiary-color: #506cf0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  padding: 0;
+  margin: 0;
+  color: #ffffff;
+  background-color: var(--primary-color);
+  position: relative;
+}
+
+body {
+  background-color: whitesmoke;
+}
+
+.main-body {
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  padding: 2% 4%;
+}
+
+p {
+  color: tert;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color 0.1s;
+}
+
+a:hover {
+  color: black;
+}
+
+button {
+  background-color: var(--primary-color);
+  border: 0;
+  padding: 1%;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  transition: background-color 0.1s;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 5px;
+}
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 1%;
-    background-color: var(--secondary-color);
-    border-bottom: 1px solid var(--tertiary-color);
-    text-shadow: 1px 2px var(--secondary-color);
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1%;
+  background-color: var(--secondary-color);
+  border-bottom: 1px solid var(--tertiary-color);
+  text-shadow: 1px 2px var(--secondary-color);
+}
 
 .btn {
-    background-color: var(--primary-color);
+  background-color: var(--primary-color);
+}
+
+textarea,
+input {
+  padding: 0.5%;
+  border-radius: 5px;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+  border: 1px solid #ffffff;
+}
+
+textarea {
+  max-width: 60%;
+  min-height: 100px;
+}
+
+form > div {
+  margin-bottom: 2%;
+}
+
+form label {
+  display: block;
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--secondary-color);
+  border-top: 1px solid #ffffff;
+  padding: 1%;
+  text-decoration: none;
+}
+
+footer h3 {
+  color: #ffffff;
+}
+
+footer p {
+  color: #ffffff;
+}
+
+footer a:hover {
+  color: #000000;
 }

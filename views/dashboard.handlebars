@@ -8,7 +8,7 @@
   <ol>
     {{#each decks as |deck|}}
     <li>
-      {{> deck-info post}}
+      {{> deck-info deck}}
       <a href="/dashboard/edit/{{deck.id}}" class="edit-link">Edit deck</a>
     </li>
     {{/each}}

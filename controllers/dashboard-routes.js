@@ -28,8 +28,8 @@ router.get("/", withAuth, (req, res) => {
     ],
   })
     .then((dbDeckData) => {
-      const decks = dbDeckData.map((deck) => deck.get({ plain: true }));
-      res.render("dashboard", { decks, loggedIn: true });
+      const deck = dbDeckData.map((deck) => deck.get({ plain: true }));
+      res.render("dashboard", { deck, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);

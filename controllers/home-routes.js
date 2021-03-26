@@ -22,10 +22,10 @@ router.get("/", (req, res) => {
   })
     .then((dbDeckData) => {
       // Serialization of data is not needed here due to API routes being built. The res.json() method automatically does that for you.
-      const decks = dbDeckData.map((deck) => deck.get({ plain: true }));
+      const deck = dbDeckData.map((deck) => deck.get({ plain: true }));
 
       res.render("homepage", {
-        decks,
+        deck,
         loggedIn: req.session.loggedIn,
       });
     })

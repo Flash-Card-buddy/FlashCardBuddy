@@ -1,15 +1,15 @@
 <section>
-  <h2 class="post-new"><a href="/dashboard/new/" >Create a New Post</a></h2>
+  <h2 class="new-deck-form"><a href="/dashboard/new/" >Create a New Deck</a></h2>
 </section>
 
-{{#if posts.length}}
+{{#if deck.length}}
 <section>
-  <h2>Your posts</h2>
+  <h2>Your decks</h2>
   <ol>
-    {{#each posts as |post|}}
+    {{#each decks as |deck|}}
     <li>
-      {{> post-info post}}
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit Deck</a>
+      {{> deck-info post}}
+      <a href="/dashboard/edit/{{deck.id}}" class="edit-link">Edit deck</a>
     </li>
     {{/each}}
   </ol>

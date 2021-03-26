@@ -1,6 +1,6 @@
 :root {
   --primary-color: #076fc4;
-  --secondary-color: #010006;
+  --secondary-color: #000000;
   --tertiary-color: #506cf0;
 }
 
@@ -66,6 +66,10 @@ header {
   text-shadow: 1px 2px var(--secondary-color);
 }
 
+.bg-dark {
+    background-color: var(--secondary-color);
+}
+
 .btn {
   background-color: var(--primary-color);
 }
@@ -115,5 +119,5 @@ footer p {
 }
 
 footer a:hover {
-  color: #000000;
+  color: var(--secondary-color);
 }

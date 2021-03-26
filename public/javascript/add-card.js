@@ -1,14 +1,15 @@
 async function newFormHandler(event) {
   event.preventDefault();
 
-  const title = document.querySelector('input[name="post-title"]').value;
-  const post_text = document.querySelector('textarea[name="post-text"]').value;
+  const front = document.querySelector('input[name="card-front"]').value;
+  const back = document.querySelector('input[name="card-back"]').value;
+  
 
-  const response = await fetch(`/api/posts`, {
+  const response = await fetch(`/api/card`, {
     method: 'POST',
     body: JSON.stringify({
-      title,
-      post_text
+      front,
+      back      
     }),
     headers: {
       'Content-Type': 'application/json'
@@ -22,4 +23,4 @@ async function newFormHandler(event) {
   }
 }
 
-document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
+document.querySelector('.new-card-form').addEventListener('submit', newFormHandler);

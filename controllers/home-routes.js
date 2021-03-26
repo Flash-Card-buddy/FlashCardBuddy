@@ -1,14 +1,14 @@
 const router = require("express").Router();
 const sequelize = require('../config/connection');
-const { Post, User, Comment } = require("../models");
+const { Deck, User, Comment } = require("../models");
 
 router.get("/", (req, res) => {
-  Post.findAll({
-    attributes: ["id", "title", "created_at"],
+  Deck.findAll({
+    attributes: ["id", "deck_name", "created_at"],
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        attributes: ["id", "comment_text", "deck_id", "user_id", "created_at"],
         include: {
           model: User,
           attributes: ["username"],
@@ -20,12 +20,12 @@ router.get("/", (req, res) => {
       },
     ],
   })
-    .then((dbPostData) => {
+    .then((dbDeckData) => {
       // Serialization of data is not needed here due to API routes being built. The res.json() method automatically does that for you.
-      const posts = dbPostData.map((post) => post.get({ plain: true }));
+      const decks = dbDeckData.map((deck) => deck.get({ plain: true }));
 
       res.render("homepage", {
-        posts,
+        decks,
         loggedIn: req.session.loggedIn,
       });
     })
@@ -45,16 +45,16 @@ router.get("/login", (req, res) => {
 });
 
 
-router.get("/post/:id", (req, res) => {
-  Post.findOne({
+router.get("/deck/:id", (req, res) => {
+  Deck.findOne({
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "post_text", "title", "created_at"],
+    attributes: ["id", "deck_name", "title", "created_at"],
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        attributes: ["id", "comment_text", "deck_name", "user_id", "created_at"],
         include: {
           model: User,
           attributes: ["username"],
@@ -66,18 +66,18 @@ router.get("/post/:id", (req, res) => {
       },
     ],
   })
-    .then((dbPostData) => {
-      if (!dbPostData) {
-        res.status(404).json({ message: "There's no post found with that id" });
+    .then((dbDeckData) => {
+      if (!dbDeckData) {
+        res.status(404).json({ message: "There's no deck found with that id" });
         return;
       }
 
       // serialize the data
-      const post = dbPostData.get({ plain: true });
+      const deck = dbDeckData.get({ plain: true });
 
       // pass data to template
-      res.render("single-post", {
-        post,
+      res.render("single-deck", {
+        deck,
         loggedIn: req.session.loggedIn,
       });
     })

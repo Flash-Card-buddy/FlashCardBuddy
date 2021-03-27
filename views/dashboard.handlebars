@@ -5,14 +5,14 @@
 {{#if deck.length}}
 <section>
   <h2>Your deck</h2>
-  <ol>
+  <dt>
     {{#each deck as |deck|}}
-    <li>
+    <dd>
       {{> deck-info deck}}
       <a href="/dashboard/edit/{{deck.id}}" class="edit-link">Edit deck</a>
-    </li>
+    </dd>
     {{/each}}
-  </ol>
+  </dt>
 </section>
 {{/if}}
 

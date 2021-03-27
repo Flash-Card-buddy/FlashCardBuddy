@@ -1,0 +1,30 @@
+<article class="deck">
+  <div class="name">
+    <h2><a href="/deck/{{id}}">{{deck_name}}</a> <span>(created by {{user.username}} on {{format_date
+        created_at}})</span>
+    </h2>
+    <p>{{deck_name}}</p>
+
+    <div class="flip-card">
+      <div class="flip-card-inner">
+
+      </div>
+
+      <div class="flip-card-front">
+          <img src="/stylesheets/src/Thumb.jpg" alt="Avatar" style="width:300px;height:300px;">
+
+         
+      </div>
+
+        <div class="flip-card-back">
+          <h1>John Doe</h1>
+          <p>Architect & Engineer</p>
+          <p>We love that guy</p>
+        </div>
+      </div>
+  </div>
+  {{!-- place this code to only display on dashboard/main page only --}}
+  <div class="meta">
+    <p>{{comments.length}} {{format_plural "comment" comments.length}}</p>
+  </div>
+</article>

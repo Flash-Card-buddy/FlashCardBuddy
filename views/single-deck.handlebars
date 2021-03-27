@@ -1,12 +1,11 @@
 {{!-- USED BY controllers/home-routes.js --}}
 
+{{!-- edit link should ONLY work for the user who created it. --}}
 
-{{#if loggedIn}}
+{{#if loggedIn }}
 
 <section>
-  <h2>Your deck</h2>
         {{> deck-info deck}}
-      <a href="/dashboard/edit/{{deck.id}}" class="edit-link">Edit deck</a>
 </section>
 
 <form class="comment-form">

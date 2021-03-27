@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Deck, User, Comment } = require('../../models');
+const { Deck, User, Comment, Card } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
@@ -88,9 +88,7 @@ router.post('/', withAuth, (req, res) => {
 
 router.put('/:id', withAuth, (req, res) => {
   Deck.update(
-    {
-      deck_name: req.body.deck_name
-    },
+     req.body[0],
     {
       where: {
         id: req.params.id
@@ -98,11 +96,22 @@ router.put('/:id', withAuth, (req, res) => {
     }
     )
     .then(dbDeckData => {
-      if (!dbDeckData) {
-        res.status(404).json({ message: 'No deck found with this id' });
-        return;
-      }
-      res.json(dbDeckData);
+      Card.update(
+        req.body[1],
+        {
+          where: {
+            deck_id: req.params.id
+          }
+        }
+      )
+      .then(dbCardData => {
+        if (!dbDeckData) {
+          res.status(404).json({ message: 'No deck found with this id' });
+          return;
+        }
+        res.json(dbDeckData);
+      })
+      
     })
     .catch(err => {
       console.log(err);

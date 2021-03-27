@@ -10,9 +10,10 @@ String.prototype.format = function() {
 
 !function($) {
   $.timeoutDialog = function(options) {
+    console.log("Am I worth it?");
 
     var settings = {
-      timeout: 60000,
+      timeout: 1000,
       countdown: 60,
       title : 'Your session is about to expire!',
       message : 'You will be logged out in {30} seconds.',
@@ -38,7 +39,7 @@ String.prototype.format = function() {
         window.setTimeout(function() {
            self.setupDialog();
            // 1 minute timer for notification
-        }, (settings.timeout - settings.countdown) * 60000);
+        }, (settings.timeout - settings.countdown) * 1000);
       },
 
       setupDialog: function() {

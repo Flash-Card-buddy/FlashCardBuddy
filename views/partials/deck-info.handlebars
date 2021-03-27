@@ -4,7 +4,8 @@
     </h2>
     <p>{{deck_name}}</p>
   </div>
+  {{!-- place this code to only display on dashboard/main page only --}}
   <div class="meta">
-    <a href="/deck/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+    <p>{{comments.length}} {{format_plural "comment" comments.length}}</p>
   </div>
 </article>

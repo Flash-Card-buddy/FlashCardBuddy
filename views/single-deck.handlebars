@@ -1,10 +1,14 @@
 {{!-- USED BY controllers/home-routes.js --}}
 
-{{!-- Partial = "> and then name of file and object passing" --}}
-{{> deck-info post }}
 
-{{!-- Comments are only available if they are logged in --}}
 {{#if loggedIn}}
+
+<section>
+  <h2>Your deck</h2>
+        {{> deck-info deck}}
+      <a href="/dashboard/edit/{{deck.id}}" class="edit-link">Edit deck</a>
+</section>
+
 <form class="comment-form">
   <div>
     <textarea name="comment-body"></textarea>

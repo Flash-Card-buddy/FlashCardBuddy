@@ -8,9 +8,12 @@ async function editFormHandler(event) {
   ];
   const response = await fetch(`/api/deck/${id}`, {
     method: 'PUT',
-    body: JSON.stringify({
-      deck
-    }),
+    body: JSON.stringify([{
+      deck_name: deck      
+    },{
+      card_front: 1,
+      card_back: 1
+    }]),
     headers: {
       'Content-Type': 'application/json'
     }

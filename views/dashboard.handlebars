@@ -6,7 +6,7 @@
 <section>
   <h2>Your deck</h2>
   <ol>
-    {{#each decks as |deck|}}
+    {{#each deck as |deck|}}
     <li>
       {{> deck-info deck}}
       <a href="/dashboard/edit/{{deck.id}}" class="edit-link">Edit deck</a>

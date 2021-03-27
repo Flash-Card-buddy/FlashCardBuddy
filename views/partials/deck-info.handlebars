@@ -2,19 +2,17 @@
   <div class="name">
     <h2><a href="/deck/{{id}}">{{deck_name}}</a> <span>(created by {{user.username}} on {{format_date created_at}})</span>
     </h2>
-    <p>{{deck_name}}</p>
   </div>
   <div class="card">
   <div class="card-header">
-    {{user.username}}'s {{deck_name}} deck:
+    {{deck_name}}
   </div>
   <div class="card-body">
-    <h5 class="card-title">{{deck_name}}</h5>
     <p class="card-text"> {{card_front}} </p>
     <a href="/deck/{{id}}" class="btn btn-primary">Open Deck</a>
   </div>
 </div>
   <div class="meta">
-    <a href="/deck/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+    <p>{{comments.length}} {{format_plural "comment" comments.length}}</p>
   </div>
 </article>

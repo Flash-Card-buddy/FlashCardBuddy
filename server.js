@@ -6,16 +6,18 @@ const helpers = require('./utils/helpers');
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({helpers});
 const session = require('express-session');
+var favicon = require('serve-favicon');
 
 
 const app = express ();
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 const PORT = process.env.PORT || 3001;
 
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 

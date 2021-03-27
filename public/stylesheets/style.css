@@ -121,3 +121,7 @@ footer p {
 footer a:hover {
   color: var(--secondary-color);
 }
+
+.card-header {
+  text-align: center;
+}

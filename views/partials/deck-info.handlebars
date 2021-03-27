@@ -4,6 +4,16 @@
     </h2>
     <p>{{deck_name}}</p>
   </div>
+  <div class="card">
+  <div class="card-header">
+    {{user.username}}'s {{deck_name}} deck:
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{deck_name}}</h5>
+    <p class="card-text"> {{card_front}} </p>
+    <a href="/deck/{{id}}" class="btn btn-primary">Open Deck</a>
+  </div>
+</div>
   <div class="meta">
     <a href="/deck/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
   </div>

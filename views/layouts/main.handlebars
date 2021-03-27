@@ -38,17 +38,12 @@
   </div>
 
   {{#if loggedIn}}
-  <script src="/javascript/logout.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="/javascript/timeout-dialogue.js"></script>
+  <script src="/javascript/logout.js"></script>  
   {{/if}}
 
   <script>
     var status = "front"
     document.querySelector(".flip-card").addEventListener("click", function () {
-
-
     if (status === "front") {
         document.querySelector(".flip-card-inner").style="transform: rotateY(180deg)"
         status = "back"

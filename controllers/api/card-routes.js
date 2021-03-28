@@ -91,7 +91,8 @@ router.put('/:id', withAuth, (req, res) => {
   Card.update(
     {
       card_front: req.body.card_front,
-      card_back: req.body.card_back
+      card_back: req.body.card_back,
+      deck_id: req.session.deck_id
     },
     {
       where: {

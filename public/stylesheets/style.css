@@ -126,6 +126,15 @@ footer a:hover {
   text-align: center;
 }
 
+.card {
+  width: 450px;
+  height: 250px;
+}
+
+.card-footer {
+  text-align: center;
+}
+
 .flip-card {
   background-color: transparent;
   width: 300px;

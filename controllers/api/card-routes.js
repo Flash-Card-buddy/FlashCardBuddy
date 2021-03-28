@@ -10,13 +10,12 @@ router.get('/', withAuth, (req, res) => {
       'id',   
       'deck_id',
       'card_front',
-      'card_back',
-      'created_at',
+      'card_back'
     ],
     include: [
       {
         model: Card,
-        attributes: ['id', 'deck_id', 'card_front', 'card_back', 'created_at'],
+        attributes: ['id', 'deck_id', 'card_front', 'card_back'],
         include: {
           model: User,
           attributes: ['username']
@@ -44,13 +43,12 @@ router.get('/:id', withAuth, (req, res) => {
       'id',   
       'deck_id',
       'card_front',
-      'card_back',
-      'created_at',
+      'card_back'
     ],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'deck_id', 'card_front', 'card_back', 'created_at'],
+        attributes: ['id', 'deck_id', 'created_at'],
         include: {
           model: User,
           attributes: ['username']

@@ -1,18 +1,17 @@
 <section>
-  <h2 class="new-deck-form"><a href="/dashboard/new/" >Create a New Deck</a></h2>
+  <h2 class="new-deck-form"><a href="/dashboard/new/">Create a New Deck</a></h2>
 </section>
 
 {{#if deck.length}}
 <section>
   <h2>Your deck</h2>
-  <ol>
+  <dt>
     {{#each deck as |deck|}}
-    <li>
-      {{> deck-info deck}}
-      <a href="/dashboard/edit/{{deck.id}}" class="edit-link">Edit deck</a>
-    </li>
-    {{/each}}
-  </ol>
+  <dd>
+    {{> deck-info deck}}
+    <a href="/dashboard/edit/{{deck.id}}" class="edit-link">Edit deck</a>
+  </dd>
+  {{/each}}
+  </dt>
 </section>
 {{/if}}
-

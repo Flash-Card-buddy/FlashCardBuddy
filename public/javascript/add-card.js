@@ -1,15 +1,15 @@
 async function newFormHandler(event) {
   event.preventDefault();
 
-  const front = document.querySelector('input[name="card-front"]').value;
-  const back = document.querySelector('input[name="card-back"]').value;
+  const card_front = document.querySelector('input[name="card-front"]').value;
+  const card_back = document.querySelector('input[name="card-back"]').value;
   
 
   const response = await fetch(`/api/card`, {
     method: 'POST',
     body: JSON.stringify({
-      front,
-      back      
+      card_front,
+      card_back      
     }),
     headers: {
       'Content-Type': 'application/json'

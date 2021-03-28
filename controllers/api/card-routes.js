@@ -13,25 +13,31 @@ router.get('/', withAuth, (req, res) => {
       'card_back'
     ],
     include: [
-      {
-        model: Card,
-        attributes: ['id', 'deck_id', 'card_front', 'card_back'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
-      },
+      // {
+      //   model: Card,
+      //   attributes: ['id', 'deck_id', 'card_front', 'card_back'],
+      //   include: {
+      //     model: User,
+      //     attributes: ['username']
+      //   }
+      // },
       {
         model: User,
         attributes: ['username']
       }
     ]
   })
-    .then(dbCardData => res.json(dbCardData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+   .then(dbCardData => {
+    if (!dbCardData) {
+      res.status(404).json({ message: 'No cards found' });
+      return;
+    }
+     res.render('new-card')
+   })
+   .catch(err => {
+     console.log(err);
+     res.status(500).json(err);
+   })
 });
 
 router.get('/:id', withAuth, (req, res) => {
@@ -65,7 +71,7 @@ router.get('/:id', withAuth, (req, res) => {
         res.status(404).json({ message: 'No cards found with this id' });
         return;
       }
-      res.json(dbCardData);
+      res.render(dbCardData);
     })
     .catch(err => {
       console.log(err);

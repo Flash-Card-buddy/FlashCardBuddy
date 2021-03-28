@@ -7,21 +7,21 @@
   <title>FCB</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">  
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body>
   <div>
-    <header class="navbar bg-dark">
+    <header class="navbar d-flex justify-content-between bg-dark">
       <h1 class="nav-item">
         <a class="nav-link" href="/">Flash Card Buddy</a>
       </h1>
       <h3 class="nav-item">
         {{#if loggedIn}}
-        <a class="nav-link" href="/dashboard">Your Dashboard</a>
+        <a class="nav-link " href="/dashboard">Your Dashboard</a>
       </h3>
-      <nav class="nav-link">
+      <nav class="nav-link ">
         <button id="logout" class="btn btn-primary">logout</button>
         {{else}}
         <a class="btn btn-primary" href="/login">login</a>
@@ -31,30 +31,43 @@
     <main>
       {{{ body }}}
     </main>
-    <footer class="nav justify-content-center bg-dark">
-      <p>Y'all come back now, y'hear!</p>
+    <footer class="nav d-flex justify-content-evenly bg-dark">
+      <img
+        src="https://64.media.tumblr.com/19d99a1804459cc97fb76757af395c24/67cb88d0c1722936-fe/s1280x1920/f0a604cdd490aee4f42e745cb9adbff7e1381b14.gifv"
+        width=25% />
+      <img
+        src="https://64.media.tumblr.com/4833b76e297737ee1f1f68c6bac5daec/67cb88d0c1722936-c4/s500x750/a47360bb280592e7e9c42cd70370a76f4de601bb.gif"
+        width=25% />
+      <img
+        src="https://64.media.tumblr.com/2c4cef87eaaf113a227b1d72339c30e1/67cb88d0c1722936-5f/s1280x1920/470e61ef53e3154ad4cdb724a2c6b8e92a4bc48b.gifv"
+        width=25% />
+      <img
+        src="https://64.media.tumblr.com/22277f74173db48d438da57c2e0b2a02/67cb88d0c1722936-46/s1280x1920/c1cc3c3b4976046c39ace12656b87e20807ae460.gifv"
+        width=25% />
+
     </footer>
   </div>
 
   {{#if loggedIn}}
-  <script src="/javascript/logout.js"></script>  
+  <script src="/javascript/logout.js"></script>
   {{/if}}
-
   <script>
     var status = "front"
     document.querySelector(".flip-card").addEventListener("click", function () {
-    if (status === "front") {
-        document.querySelector(".flip-card-inner").style="transform: rotateY(180deg)"
+      if (status === "front") {
+        document.querySelector(".flip-card-inner").style = "transform: rotateY(180deg)"
         status = "back"
       }
       else {
-        document.querySelector(".flip-card-inner").style="transform: rotateY(360deg)"
+        document.querySelector(".flip-card-inner").style = "transform: rotateY(360deg)"
         status = "front"
       }
       console.log(status)
 
     })
   </script>
+
+
 </body>
 
 </html>

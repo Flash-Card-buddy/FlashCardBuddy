@@ -160,3 +160,7 @@ footer a:hover {
   color: white;
   transform: rotateY(180deg);
 }
+
+.nav .justify-content-center .bg-dark p {
+  margin: 0 auto;
+}

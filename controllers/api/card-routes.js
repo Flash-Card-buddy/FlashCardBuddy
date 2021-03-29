@@ -4,21 +4,6 @@ const { User, Comment, Card } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/', withAuth, (req, res) => {
-<<<<<<< HEAD
-  console.log('======================');
-  Card.findAll({
-    attributes: [
-      'id',   
-      'deck_id',
-      'card_front',
-      'card_back'
-    ],
-    include: [
-      {
-        model: Card,
-        attributes: ['id', 'deck_id', 'card_front', 'card_back'],
-        include: {
-=======
   if (req.session) {
     console.log('======================');
     Card.findAll({
@@ -38,7 +23,6 @@ router.get('/', withAuth, (req, res) => {
         //   }
         // },
         {
->>>>>>> Cori
           model: User,
           attributes: ['username']
         }

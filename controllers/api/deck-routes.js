@@ -53,12 +53,8 @@ router.get('/:id', withAuth, (req, res) => {
         }
       },
       {
-        model: User,
-        attributes: ['username']
-      }, 
-      {
         model: Card, 
-        attributes: ['id', 'card_front' , 'card_back']
+        attributes: ['id']
       }
     ]
   })
@@ -106,7 +102,6 @@ router.put('/:id', withAuth, (req, res) => {
           }
         }
       )
-      //this was card data?
       .then(dbDeckData => {
         if (!dbDeckData) {
           res.status(404).json({ message: 'No deck found with this id' });

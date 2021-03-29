@@ -65,8 +65,7 @@ router.post("/", withAuth, (req, res) => {
     id: req.body.id,
     deck_id: req.body.deck_id,
     card_front: req.body.card_front,
-    card_back: req.body.card_back,
-    user_id: req.session.user_id,
+    card_back: req.body.card_back    
   })
     .then((dbCardData) => {
       console.log('route "/" hit', dbCardData);
@@ -85,8 +84,7 @@ router.put("/:id", withAuth, (req, res) => {
         id: req.body.id,
         deck_id: req.body.deck_id,
         card_front: req.body.card_front,
-        card_back: req.body.card_back,
-        user_id: req.session.user_id,
+        card_back: req.body.card_back
       },
       {
         where: {

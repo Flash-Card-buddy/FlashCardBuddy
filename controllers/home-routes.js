@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require('../config/connection');
-const { Deck, User, Comment } = require("../models");
+const { Deck, User, Comment, Card } = require("../models");
 
 router.get("/", (req, res) => {
   Deck.findAll({
@@ -64,6 +64,10 @@ router.get("/deck/:id", (req, res) => {
         model: User,
         attributes: ["username"],
       },
+      {
+        model: Card, 
+        attributes: ['id', 'card_front' , 'card_back']
+      }
     ],
   })
     .then((dbDeckData) => {

@@ -58,7 +58,7 @@ router.get('/:id', withAuth, (req, res) => {
       }, 
       {
         model: Card, 
-        attributes: ['id', 'card_front', 'card_back', 'deck_id']
+        attributes: ['id', 'card_front' , 'card_back']
       }
     ]
   })

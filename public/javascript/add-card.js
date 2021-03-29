@@ -11,6 +11,7 @@ async function newFormHandler(event) {
 
   console.log(typeof deck_id)
   console.log(deck_id)
+  console.log(window.location)
   
   const response = await fetch(`/api/card`, {
     method: 'POST',

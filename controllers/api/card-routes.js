@@ -89,7 +89,7 @@ router.post('/', withAuth, (req, res) => {
       id: req.body.id,
       card_front: req.body.card_front,
       card_back: req.body.card_back,
-      deck_id: req.session.deck_id
+      deck_id: req.body.deck_id
     })
       .then(dbCardData => res.json(dbCardData))
       .catch(err => {

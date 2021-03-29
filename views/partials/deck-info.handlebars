@@ -1,13 +1,22 @@
-<div class="container flip-card">
-{{deck_name}}
-
-  <div class="flip-card-inner">
-    <div class="flip-card-front">
-      {{card_front}}
-    </div>
-
-    <div class="flip-card-back">
-      {{card_back}}
-    </div>
+<article class="deck">
+  <div class="name">
+    
+    {{!-- <p>
+      
+    </p> --}}
+    
   </div>
+  <div class="card">
+  <div class="card-header">
+    {{deck_name}}
+  </div>
+  <div class="card-body">
+    <p class="card-text"> {{card-front}} </p>
+
+  </div>
+    <div class="card-footer">
+    <a href="/deck/{{id}}" class="btn btn-primary">Open Deck</a>
+    <a href="/card" class="btn btn-success">Add Card</a>
+    <a href="/deck/{{id}}" class="btn btn-danger">Delete Deck</a>
+    </div>
 </div>

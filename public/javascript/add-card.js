@@ -1,8 +1,8 @@
 async function newFormHandler(event) {
   event.preventDefault();
 
-  const card_front = document.querySelector('input[name="card-front"]').value;
-  const card_back = document.querySelector('input[name="card-back"]').value;
+  const card_front = document.querySelector('textarea[name="card-front"]').value;
+  const card_back = document.querySelector('textarea[name="card-back"]').value;
   // const deck_id = document.querySelector('input[name="deck-id"]').value;
   
   const deck_id = window.location.toString().split('/')[

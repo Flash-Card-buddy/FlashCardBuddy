@@ -102,7 +102,8 @@ router.put('/:id', withAuth, (req, res) => {
           }
         }
       )
-      .then(dbCardData => {
+      //this was card data?
+      .then(dbDeckData => {
         if (!dbDeckData) {
           res.status(404).json({ message: 'No deck found with this id' });
           return;

@@ -84,6 +84,8 @@ router.get('/:id', withAuth, (req, res) => {
 });
 
 router.post('/', withAuth, (req, res) => {  
+  console.log('route "/" hit')
+  console.log(req.body)
    Card.create({
     id: req.body.id,
     card_front: req.body.card_front,
@@ -91,7 +93,10 @@ router.post('/', withAuth, (req, res) => {
     deck_id: req.body.deck_id,
     user_id: req.session.user_id
   })
-    .then(dbCardData => res.json(dbCardData))
+    .then(dbCardData => {
+      console.log('route "/" hit', dbCardData)
+      res.json(dbCardData)
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);

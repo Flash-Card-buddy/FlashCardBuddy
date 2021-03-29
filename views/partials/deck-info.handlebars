@@ -1,14 +1,13 @@
-<article class="deck">
-  <div class="name">
-    <h2><a href="/deck/{{id}}">{{deck_name}}</a> 
-    </h2>
-    <p>
-      
-    </p>
-    
+<div class="container flip-card">
+{{deck_name}}
+
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      {{card_front}}
+    </div>
+
+    <div class="flip-card-back">
+      {{card_back}}
+    </div>
   </div>
-  {{!-- place this code to only display on dashboard/main page only --}}
-  <div class="meta">
-    <p>{{comments.length}} {{format_plural "comment" comments.length}}</p>
-  </div>
-</article>
+</div>

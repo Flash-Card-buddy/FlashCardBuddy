@@ -29,10 +29,6 @@ main {
   padding: 2% 4%;
 }
 
-p {
-  color: tert;
-}
-
 a {
   text-decoration: none;
   color: var(--primary-color);
@@ -110,23 +106,10 @@ footer {
   text-decoration: none;
 }
 
-footer h3 {
-  color: #ffffff;
-}
-
-footer p {
-  color: #ffffff;
-}
-
-footer a:hover {
-  color: var(--secondary-color);
-}
-
-
 .flip-card {
   background-color: transparent;
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 250px;
   perspective: 1000px;
 }
 
@@ -159,8 +142,4 @@ footer a:hover {
   background-color: #2980b9;
   color: white;
   transform: rotateY(180deg);
-}
-
-.nav .justify-content-center .bg-dark p {
-  margin: 0 auto;
 }

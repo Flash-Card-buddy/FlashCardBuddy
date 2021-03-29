@@ -9,7 +9,6 @@ if (status === "front") {
     document.querySelector(".flip-card-inner").style="transform: rotateY(360deg)"
     status = "front"
   }
-  console.log(status)
 
 })
 // }

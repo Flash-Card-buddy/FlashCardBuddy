@@ -9,6 +9,9 @@ async function newFormHandler(event) {
     window.location.toString().split('/').length - 1
   ];
 
+  console.log(typeof deck_id)
+  console.log(deck_id)
+  
   const response = await fetch(`/api/card`, {
     method: 'POST',
     body: JSON.stringify({

@@ -55,14 +55,14 @@ router.get('/:id', withAuth, (req, res) => {
         'card_back'
       ],
       include: [
-        {
-          model: Comment,
-          attributes: ['id', 'deck_id', 'created_at'],
-          include: {
-            model: User,
-            attributes: ['username']
-          }
-        },
+        // {
+        //   model: Comment,
+        //   attributes: ['id', 'deck_id', 'created_at'],
+        //   include: {
+        //     model: User,
+        //     attributes: ['username']
+        //   }
+        // },
         {
           model: User,
           attributes: ['username']

@@ -1,9 +1,8 @@
+{{> card-info card}}
 {{!-- USED BY controllers/home-routes.js --}}
 
 {{!-- edit link should ONLY work for the user who created it. --}}
-
 {{#if loggedIn }}
-<section class="">
   {{!-- <div>
     <button class="d-inline-flex p-2" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -11,7 +10,7 @@
     </button>
   </div> --}}
 
-        {{> deck-info deck}}
+    
       {{!-- </div>
 
 
@@ -28,7 +27,6 @@
   </div> --}}
 
 
-</section>
 {{!-- <section>
   <div class="carousel-control-prev-icon">
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">

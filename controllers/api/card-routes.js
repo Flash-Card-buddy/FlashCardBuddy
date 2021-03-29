@@ -88,7 +88,8 @@ router.post('/', withAuth, (req, res) => {
     id: req.body.id,
     card_front: req.body.card_front,
     card_back: req.body.card_back,
-    deck_id: req.session.deck_id
+    deck_id: req.body.deck_id,
+    user_id: req.session.user_id
   })
     .then(dbCardData => res.json(dbCardData))
     .catch(err => {
@@ -103,7 +104,8 @@ router.put('/:id', withAuth, (req, res) => {
       {
         card_front: req.body.card_front,
         card_back: req.body.card_back,
-        deck_id: req.session.deck_id
+        deck_id: req.body.deck_id,
+        user_id: req.session.user_id
       },
       {
         where: {

@@ -24,7 +24,7 @@ Card.init(
       type: DataTypes.TEXT, 
       allowNull: false,
       validate: {
-        len: [1,280]
+        len: [1,200]
       }
     },
     card_back: {

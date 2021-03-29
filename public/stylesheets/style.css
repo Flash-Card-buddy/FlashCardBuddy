@@ -122,6 +122,18 @@ footer a:hover {
   color: var(--secondary-color);
 }
 
+.card-header {
+  text-align: center;
+}
+
+.card {
+  width: 450px;
+  height: 250px;
+}
+
+.card-footer {
+  text-align: center;
+}
 
 .flip-card {
   background-color: transparent;
@@ -140,8 +152,6 @@ footer a:hover {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
-
-
 .flip-card-front, .flip-card-back {
   position: absolute;
   width: 100%;
@@ -159,8 +169,4 @@ footer a:hover {
   background-color: #2980b9;
   color: white;
   transform: rotateY(180deg);
-}
-
-.nav .justify-content-center .bg-dark p {
-  margin: 0 auto;
 }

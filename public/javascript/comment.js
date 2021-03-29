@@ -7,6 +7,9 @@ async function commentFormHandler(event) {
     window.location.toString().split('/').length - 1
   ];
 
+  console.log(typeof deck_id)
+  console.log(deck_id)
+
   if (comment_text) {
     const response = await fetch('/api/comments', {
       method: 'POST',

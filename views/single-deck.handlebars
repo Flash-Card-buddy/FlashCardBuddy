@@ -1,45 +1,32 @@
+{{> card-info card}}
 {{!-- USED BY controllers/home-routes.js --}}
 
 {{!-- edit link should ONLY work for the user who created it. --}}
-
 {{#if loggedIn }}
-<section class="">
+  {{!-- <div>
+    <button class="d-inline-flex p-2" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Prev card</span>
+    </button>
+  </div> --}}
 
-  <div class="container flip-card">
-
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <img src="/stylesheets/src/Thumb.jpg" alt="Avatar" style="width:300px;height:300px;">
-
-
-      </div>
-
-      <div class="flip-card-back">
-        {{> deck-info deck}}
-      </div>
+    
+      {{!-- </div>
 
 
     </div>
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <button class="d-inline-flex p-2" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Prev card</span>
-          </button>
-        </div>
 
-        <div class="col">
-          <button class="d-inline-flex p-2" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next card</span>
-          </button>
-        </div>
-      </div>
-    </div>
-</section>
+  </div> --}}
+  
+
+  {{!-- <div class="">
+    <button class="d-inline-flex p-2" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next card</span>
+    </button>
+  </div> --}}
+
+
 {{!-- <section>
   <div class="carousel-control-prev-icon">
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">

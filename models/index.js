@@ -33,7 +33,7 @@ Deck.hasMany(Comment, {
 });
 
 Deck.hasMany(Card, {
-  foreignKey: 'card_id'
+  foreignKey: 'deck_id'
 });
 
 Card.belongsTo(Deck, {

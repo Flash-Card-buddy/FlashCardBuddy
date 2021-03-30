@@ -44,7 +44,7 @@ router.get("/:id", withAuth, (req, res) => {
       where: {
         id: req.params.id,
       },
-      attributes: ["id", "card_id", "card_front", "card_back"],
+      attributes: ["id", "deck_id", "card_front", "card_back"],
     })
       .then((dbCardData) => {
         if (!dbCardData) {

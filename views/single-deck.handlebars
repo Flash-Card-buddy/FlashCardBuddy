@@ -1,7 +1,9 @@
+{{!-- {{#each deck.cards as |card|}}
+  {{> card-info card}}
+{{/each}} --}}
 {{#each deck.cards as |card|}}
-  {{> card-info card }}
+  {{> card.[@index]}}
 {{/each}}
-{{!-- USED BY controllers/home-routes.js --}}
 
 {{!-- edit link should ONLY work for the user who created it. --}}
 {{#if loggedIn }}

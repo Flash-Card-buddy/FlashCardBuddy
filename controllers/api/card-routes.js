@@ -1,7 +1,7 @@
-const router = require("express").Router();
-const sequelize = require("../../config/connection");
-const { Card, Deck, User } = require("../../models");
-const withAuth = require("../../utils/auth");
+const router = require('express').Router();
+const sequelize = require('../../config/connection');
+const { User, Comment, Card, Deck } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 router.get("/", withAuth, (req, res) => {
   if (req.session) {
@@ -15,26 +15,26 @@ router.get("/", withAuth, (req, res) => {
       include: [
         {
           model: Deck,
-          attributes: [ 'deck_name']
-          ,
-          include: {
-            model: User,
-            attributes: ['username']
-          }
+          attributes: ["id", "user_id", "deck_name"]
+        },
+        {
+          model: User,
+          attributes: ['username']
         }
       ]
     })
-      .then((dbCardData) => {
-        if (!dbCardData) {
-          res.status(404).json({ message: "No cards found" });
-          return;
-        }
-        res.render("new-card");
-      })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+    .then(dbCardData => {
+      if (!dbCardData) {
+        res.status(404).json({ message: 'No cards found' });
+        return;
+      }
+      // res.render('new-card')
+      res.json(dbCardData)
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    })
   }
 });
 
@@ -80,10 +80,9 @@ router.put("/:id", withAuth, (req, res) => {
   if (req.session) {
     Card.update(
       {
-        id: req.body.id,
-        deck_id: req.body.deck_id,
         card_front: req.body.card_front,
-        card_back: req.body.card_back
+        card_back: req.body.card_back,
+        deck_id: req.body.deck_id
       },
       {
         where: {

@@ -13,7 +13,7 @@ async function newFormHandler(event) {
   console.log(deck_id)
   console.log(window.location)
   
-  const response = await fetch(`/api/cards`, {
+  const response = await fetch(`/api/card`, {
     method: 'POST',
     body: JSON.stringify({
       card_front,

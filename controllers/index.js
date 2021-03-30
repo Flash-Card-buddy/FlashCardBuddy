@@ -3,7 +3,6 @@ const apiRoutes = require('./api');
 const homeRoutes = require('./home-routes.js');
 const dashboardRoutes = require('./dashboard-routes.js');
 const deckRoutes = require('./api/deck-routes');
-const cardRoutes = require('./api/card-routes');
 const cardHtmlRoutes = require('./card-html-routes');
 
 router.use('/', homeRoutes);

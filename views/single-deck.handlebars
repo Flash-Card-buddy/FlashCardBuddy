@@ -1,4 +1,6 @@
-{{> card-info card}}
+{{#each cards as |card|}}
+  {{> card-info card}}
+{{/each}}
 {{!-- USED BY controllers/home-routes.js --}}
 
 {{!-- edit link should ONLY work for the user who created it. --}}

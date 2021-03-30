@@ -37,7 +37,8 @@ router.get('/', withAuth, (req, res) => {
         res.status(404).json({ message: 'No cards found' });
         return;
       }
-      res.render('new-card')
+      // res.render('new-card')
+      res.json(dbCardData)
     })
     .catch(err => {
       console.log(err);
@@ -94,7 +95,8 @@ router.post('/', withAuth, (req, res) => {
     id: req.body.id,
     card_front: req.body.card_front,
     card_back: req.body.card_back,
-    deck_id: req.body.deck_id
+    deck_id: req.body.deck_id,
+    user_id: req.session.user_id
   })
     .then(dbCardData => {
       console.log('route "/" hit', dbCardData)

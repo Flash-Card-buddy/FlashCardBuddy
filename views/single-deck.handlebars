@@ -1,14 +1,25 @@
-{{!-- {{#each deck.cards as |card|}}
-  {{> card-info card}}
-{{/each}} --}}
-{{#each deck.cards as |card|}}
-  {{> card.[@index]}}
-{{/each}}
+<section>
+  <div>
+    <h4>Your cards:</h4>
+    {{#with card}}
+  <div class="flip-card">
+    <div class="flip-card-inner">
+    </div>
 
-{{!-- edit link should ONLY work for the user who created it. --}}
+    <div class="flip-card-front">
+      {{> card card_front}}   
+    </div>
+
+    <div class="flip-card-back">
+      {{> card card_back}}
+    </div>
+  </div>
+{{/with}}
+  </div>
+</section>
+
 {{#if loggedIn }}
   
-
 
 <form class="comment-form">
   <div>

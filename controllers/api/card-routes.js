@@ -63,7 +63,6 @@ router.get("/:id", withAuth, (req, res) => {
 router.post("/", withAuth, (req, res) => {
   Card.create({
     id: req.body.id,
-    deck_id: req.body.deck_id,
     card_front: req.body.card_front,
     card_back: req.body.card_back    
   })

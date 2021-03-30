@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { User, Comment, Card } = require('../../models');
+const { User, Comment, Card, Deck } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/', withAuth, (req, res) => {
@@ -22,6 +22,10 @@ router.get('/', withAuth, (req, res) => {
         //     attributes: ['username']
         //   }
         // },
+        {
+          model: Deck,
+          attributes: ["id", "user_id", "deck_name"]
+        },
         {
           model: User,
           attributes: ['username']
@@ -90,8 +94,7 @@ router.post('/', withAuth, (req, res) => {
     id: req.body.id,
     card_front: req.body.card_front,
     card_back: req.body.card_back,
-    deck_id: req.body.deck_id,
-    user_id: req.session.user_id
+    deck_id: req.body.deck_id
   })
     .then(dbCardData => {
       console.log('route "/" hit', dbCardData)
@@ -109,8 +112,7 @@ router.put('/:id', withAuth, (req, res) => {
       {
         card_front: req.body.card_front,
         card_back: req.body.card_back,
-        deck_id: req.body.deck_id,
-        user_id: req.session.user_id
+        deck_id: req.body.deck_id
       },
       {
         where: {

@@ -1,25 +1,41 @@
 <section>
   <div>
     <h4>Your cards:</h4>
-   <button data-position={{position}}>Prev</button>
-       <button data-position={{position}} class="next" >Next</button>
+    <button data-position={{position}}>Prev</button>
+    <button data-position={{position}} class="next">Next</button>
     {{#each decks }}
 
     <div data-position={{position}} class="flip-card">
       <div class="flip-card-inner">
 
-        <div class="flip-card-front">
+        {{!-- <div class="flip-card-front"> --}}
 
-         
-          {{dataValues.card_front}}
-        
-        </div>
+          <div class="card flip-card-front">
+            <div class="card-header">
+              {{deck_name}}
+            </div>
+            <div class="card-body">
+              <p class="card-text"> {{dataValues.card_front}} </p>
 
-        <div class="flip-card-back">
+            </div>
 
-          {{dataValues.card_back}}
+          </div>
+        {{!-- </div> --}}
 
-        </div>
+        {{!-- <div class="flip-card-back"> --}}
+
+          <div class="card flip-card-back">
+            <div class="card-header">
+              {{deck_name}}
+            </div>
+            <div class="card-body">
+              <p class="card-text"> {{dataValues.card_back}} </p>
+
+            </div>
+
+          </div>
+
+        {{!-- </div> --}}
 
       </div>
     </div>
@@ -58,7 +74,7 @@
 <script>
 
 
-var position = 0 
+  var position = 0
   var status = "front"
   $(".flip-card").on("click", function () {
     if (status === "front") {
@@ -73,27 +89,27 @@ var position = 0
 
   })
 
-  $(".next").on("click", function(){
-       position++
-      display(position)
+  $(".next").on("click", function () {
+    position++
+    display(position)
   })
 
-function display(value){
-  $(".flip-card").each(function(index){
-    
-    console.log(index, value)
-    if(index>value){
-     $(this).hide()
-    }
-    if(value>index){
-      $(this).show()
-    } else {
-      $(this).hide()
-    }
-  })
+  function display(value) {
+    $(".flip-card").each(function (index) {
 
-}
+      console.log(index, value)
+      if (index > value) {
+        $(this).hide()
+      }
+      if (value > index) {
+        $(this).show()
+      } else {
+        $(this).hide()
+      }
+    })
 
-display(position)
+  }
+
+  display(position)
 
 </script>

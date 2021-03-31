@@ -3,44 +3,38 @@ const sequelize = require('../config/connection');
 const { User, Comment, Card, Deck } = require('../models');
 const withAuth = require('../utils/auth');
 
-// router.get('/', withAuth, (req, res) => {
-//   var mappedUserArray;
-//   Card.findAll({
-//     where: {
-//       user_id: req.session.user_id,
-//     }, 
-//     include: [
-//       {
-//         model: User, 
-//         attributes: ['username']
-//       }, 
-//       {
-//         model: Deck, 
-//         attributes: ['id', 'deck_name', 'user_id']
-//       }
-//     ]
-//   })
-//   .then((dbData) => {
-//     var mappedUserArray = dbData
-//     .map((element, i) => {
-//       var cardArray1 = {
-//         id: element.dataValues.id,
-//         card_front: element.dataValues.deck.card_front,
-//         card_back: element.dataValues.deck.card_back,
-//         deck_id: element.dataValues.deck.deck_id,
-//         user_id: element.dataValues.deck.user_id
-//       };
-//       return cardArray1;
-//     });
-//     res.render('deck', {
-//       cardObj: mappedUserArray
-//     });
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//     res.status(500).json(err);
-//   });
-// })
+router.get('/:id', withAuth, (req, res) => {  
+   Card.findByPk( req.params.id, {
+     attributes: ['id', 'card_front', 'card_back', 'deck_id'],
+    include: [
+      {
+        model: Deck, 
+        attributes: ['id', 'deck_name', 'user_id']
+      }, 
+      {
+        model: User, 
+        attributes: ['username'],
+      }
+    ]
+  })
+    .then((dbCardData) => {
+      if (dbCardData) {
+        const card = dbCardData.get({ plain: true });
+        console.log(card)
+
+        res.render('single-deck', {
+          card, 
+          loggedIn: true,
+        });
+      } else {
+        res.status(404).end();
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 router.get('/add/:deckId', withAuth, (req, res) => {
   res.render('new-card');

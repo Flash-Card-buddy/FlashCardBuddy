@@ -14,14 +14,6 @@ router.get('/', withAuth, (req, res) => {
         'card_back'
       ],
       include: [
-        // {
-        //   model: Card,
-        //   attributes: ['id', 'deck_id', 'card_front', 'card_back'],
-        //   include: {
-        //     model: User,
-        //     attributes: ['username']
-        //   }
-        // },
         {
           model: Deck,
           attributes: ["id", "user_id", "deck_name"]
@@ -60,14 +52,6 @@ router.get('/:id', withAuth, (req, res) => {
         'card_back'
       ],
       include: [
-        // {
-        //   model: Comment,
-        //   attributes: ['id', 'deck_id', 'created_at'],
-        //   include: {
-        //     model: User,
-        //     attributes: ['username']
-        //   }
-        // },
         {
           model: User,
           attributes: ['username']

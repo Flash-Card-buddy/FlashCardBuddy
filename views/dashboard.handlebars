@@ -5,7 +5,7 @@
 
 {{#if deck.length}}
 <section>
-  <h2>Your deck</h2>
+  <p>Your {{format_plural "Deck" deck.length }}</p>
   <dt>
     {{#each deck as |deck|}}
   <dd>

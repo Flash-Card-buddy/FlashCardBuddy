@@ -30,7 +30,8 @@ main {
 }
 
 p {
-  color: tert;
+  font-size: x-large;
+  font-weight: bolder;
 }
 
 a {
@@ -161,12 +162,12 @@ footer a:hover {
 }
 
 .flip-card-front {
-  background-color: #bbb;
+  background-color: rgb(24, 169, 189);
   color: black;
 }
 
 .flip-card-back {
-  background-color: #2980b9;
+  background-color: #0413a1;
   color: white;
   transform: rotateY(180deg);
 }

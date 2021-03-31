@@ -31,7 +31,7 @@ Card.init(
       type: DataTypes.TEXT, 
       allowNull: false,
       validate: {
-        len: [1,200]
+        len: [1,280]
       }
     }
     

@@ -1,39 +1,9 @@
-<article class="deck">
-  <div class="name">
-    <h2><a href="/deck/{{id}}">{{deck_name}}</a>
-    </h2>
-    <p>{{deck_name}}</p>
-
-    <div class="flip-card">
-      <div class="flip-card-inner">
-      
-
-      <div class="flip-card-front">
-        <div class="card">
-          <div class="card-header">
-            {{deck_name}}
-          </div>
-          <div class="card-body">
-            <p class="card-text"> front{{card-front}} </p>
-
-          </div>
-        </div>
-      </div>
+<div class="card">
+  <h4>{{deck_id deck_name}}</h4>
+  {{#with cards}}
+    <div class="card_front"> {{{card_front}}} </div>
+    <div class="card_back"> {{{card_back}}} </div>
+  {{/with}}
+</div>
 
 
-      <div class="flip-card-back">
-        <div class="card">
-          <div class="card-header">
-            {{deck_name}}
-          </div>
-          <div class="card-body">
-            <p class="card-text"> back{{card-back}} </p>
-
-          </div>
-        </div>
-      </div>
-      </div>
-    </div>
-  </div>
-  {{!-- place this code to only display on dashboard/main page only --}}
-</article>

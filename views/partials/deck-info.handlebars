@@ -1,9 +1,7 @@
 <article class="deck">
   <div class="name">
     
-    {{!-- <p>
-      
-    </p> --}}
+  
     
   </div>
   <div class="card">
@@ -11,12 +9,16 @@
     {{deck_name}}
   </div>
   <div class="card-body">
-    <p class="card-text"> {{card-front}} </p>
+    <p class="card-text"> {{card-info}} </p>
 
   </div>
     <div class="card-footer">
-    <a href="/deck/{{id}}" class="btn btn-primary">Open Deck</a>
-    <a href="/card" class="btn btn-success">Add Card</a>
-    <a href="/deck/{{id}}" class="btn btn-danger">Delete Deck</a>
+    <a href="/deck/{{id}}" class="btn bg-primary">Open Deck</a>
+    <a href="/card/add/{{id}}" class="btn bg-success">Add Card</a>
+    <a href="/deck/{{id}}" class="btn bg-danger">Delete Deck</a>
     </div>
 </div>
+  <div class="meta">
+    <p>{{comments.length}} {{format_plural "comment" comments.length}}</p>
+  </div>
+</article>

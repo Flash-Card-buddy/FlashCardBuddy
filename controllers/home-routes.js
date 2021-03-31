@@ -1,7 +1,11 @@
 const router = require("express").Router();
 const sequelize = require('../config/connection');
-const { Deck, User, Comment } = require("../models");
+const { Deck, User, Comment, Card } = require("../models");
 
+const helpers = require('../utils/helpers');
+const exphbs = require('express-handlebars');
+const hbs = exphbs.create({helpers});
+var positionCounter=0
 router.get("/", (req, res) => {
   Deck.findAll({
     attributes: ["id", "deck_name", "created_at"],
@@ -61,23 +65,37 @@ router.get("/deck/:id", (req, res) => {
         },
       },
       {
+        model: Card, 
+        attributes: ['id', 'card_front', 'card_back', 'deck_id']
+      },
+      {
         model: User,
         attributes: ["username"],
       },
     ],
   })
     .then((dbDeckData) => {
+
       if (!dbDeckData) {
         res.status(404).json({ message: "There's no deck found with that id" });
         return;
       }
+      positionCounter=0
+      hbs.handlebars.registerHelper('position', function() {
+      
+        return positionCounter++;
+    });
+
 
       // serialize the data
       const deck = dbDeckData.get({ plain: true });
+      console.log("deck", deck.cards)
 
+     console.log(dbDeckData.cards[0].dataValues.card_front)
       // pass data to template
       res.render("single-deck", {
-        deck,
+       
+          decks : dbDeckData.cards,
         loggedIn: req.session.loggedIn,
       });
     })

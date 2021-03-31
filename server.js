@@ -15,11 +15,16 @@ const PORT = process.env.PORT || 3001;
 
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '/public')));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+
+hbs.handlebars.registerHelper("with", function(context, options) {
+  return options.fn(context);
+});
 
 const sess = {
   secret: 'I will never reveal this secret.',

@@ -34,6 +34,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', withAuth, (req, res) => {
+  console.log(req.params.id, "id")
   Deck.findOne({
     where: {
       id: req.params.id
@@ -55,6 +56,10 @@ router.get('/:id', withAuth, (req, res) => {
       {
         model: User,
         attributes: ['username']
+      }, 
+      {
+        model: Card, 
+        attributes: ['id', 'card_front', 'card_back', 'deck_id']
       }
     ]
   })
@@ -63,6 +68,7 @@ router.get('/:id', withAuth, (req, res) => {
         res.status(404).json({ message: 'No deck found with this id' });
         return;
       }
+      console.log("dbDeckData",dbDeckData)
       res.json(dbDeckData);
     })
     .catch(err => {
@@ -93,6 +99,7 @@ router.put('/:id', withAuth, (req, res) => {
       }
     }
     )
+    // I am not sure we need this here?
     .then(dbDeckData => {
       Card.update(
         req.body[1],
@@ -102,7 +109,8 @@ router.put('/:id', withAuth, (req, res) => {
           }
         }
       )
-      .then(dbCardData => {
+      //this was card data?
+      .then(dbDeckData => {
         if (!dbDeckData) {
           res.status(404).json({ message: 'No deck found with this id' });
           return;

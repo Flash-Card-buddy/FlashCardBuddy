@@ -1,48 +1,40 @@
-{{!-- USED BY controllers/home-routes.js --}}
+<section>
+  <div>
+    <h4>Your cards:</h4>
+   <button data-position={{position}}>Prev</button>
+       <button data-position={{position}} class="next" >Next</button>
+    {{#each decks }}
 
-{{!-- edit link should ONLY work for the user who created it. --}}
+    <div data-position={{position}} class="flip-card">
+      <div class="flip-card-inner">
 
-{{#if loggedIn }}
-<section class="container">
-    {{>card-info}}
-    <div class="">
-      <div class="row">
-        <div class="col">
-          <button class="d-inline-flex p-2" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Prev card</span>
-          </button>
+        <div class="flip-card-front">
+
+         
+          {{dataValues.card_front}}
+        
         </div>
 
-        <div class="col">
-          <button class="d-inline-flex p-2" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next card</span>
-          </button>
+        <div class="flip-card-back">
+
+          {{dataValues.card_back}}
+
         </div>
+
       </div>
     </div>
+
+
+    {{/each}}
+  </div>
+
+
 </section>
-{{!-- <section>
-  <div class="carousel-control-prev-icon">
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-  </div>
-  <div class="carousel-control-next-icon">
-    <button class="carousel-control-next-icon visually-hidden" type="button" aria-hidden="true"
-      data-bs-target="#carouselExampleControls" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</section> --}}
+
+{{#if loggedIn }}
 
 
-{{!-- <form class="comment-form">
+<form class="comment-form">
   <div>
     <textarea name="comment-body"></textarea>
   </div>
@@ -50,11 +42,58 @@
   <div>
     <button type="submit">add comment</button>
   </div>
-</form> --}}
+</form>
 {{/if}}
 
+{{> comments deck.comments}}
 
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
 {{/if}}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+  integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+  crossorigin="anonymous"></script>
+<script>
+
+
+var position = 0 
+  var status = "front"
+  $(".flip-card").on("click", function () {
+    if (status === "front") {
+      $(".flip-card-inner").attr("style", "transform: rotateY(180deg)")
+      status = "back"
+    }
+    else {
+      $(".flip-card-inner").attr("style", "transform: rotateY(360deg)")
+      status = "front"
+    }
+    console.log(status)
+
+  })
+
+  $(".next").on("click", function(){
+       position++
+      display(position)
+  })
+
+function display(value){
+  $(".flip-card").each(function(index){
+    
+    console.log(index, value)
+    if(index>value){
+     $(this).hide()
+    }
+    if(value>index){
+      $(this).show()
+    } else {
+      $(this).hide()
+    }
+  })
+
+}
+
+display(position)
+
+</script>

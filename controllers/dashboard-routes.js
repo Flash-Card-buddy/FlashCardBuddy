@@ -2,8 +2,7 @@ const router = require("express").Router();
 const sequelize = require('../config/connection');
 //Provides requirement of being logged in (withAuth) to access certain features of blog
 const withAuth = require("../utils/auth");
-const { Deck, User, Comment } = require("../models");
-
+const { Deck, User, Comment, Card } = require("../models");
 //Prevents users from accessing Dashboard w/out being logged in
 router.get("/", withAuth, (req, res) => {
   Deck.findAll({
@@ -24,7 +23,7 @@ router.get("/", withAuth, (req, res) => {
       {
         model: User,
         attributes: ["username"],
-      },
+      }
     ],
   })
     .then((dbDeckData) => {
@@ -53,6 +52,11 @@ router.get("/edit/:id", withAuth, (req, res) => {
         model: User,
         attributes: ["username"],
       },
+      {
+      
+        model: Card, 
+        attributes:["id", "card_front", "card_back", "deck_id"]
+      }
     ],
   })
     .then((dbDeckData) => {

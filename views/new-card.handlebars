@@ -2,17 +2,28 @@
   <h2>Create New Card</h2>
 
   <form class="new-card-form">
-    <div>
+    {{!-- <div>
      {{deck_name}}
-    </div>
-    
+    </div> --}}
+    <div>      
       <label for="card-front">Front:</label>
-      <textarea type="text" id="card-front" name="card-front"></textarea>
+      <input type="text" id="card-front" name="card-front"/>
       <label for="card-back">Back:</label>
-      <textarea type="text" id="card-back" name="card-back"></textarea>
+      <input type="text" id="card-back" name="card-back"/>
+    </div>
   
     <button type="submit" class="btn">Create</button>
   </form>
+
 </section>
+  {{#if cards.length}}
+  <section>
+    <h2>Your Cards</h2>
+    {{ card-info card}}
+    <a href="/deck/card/{{id}}"
+    class="edit-card">Edit Card</a>
+  </section>
+  {{/if}}
+
 
 <script src="/javascript/add-card.js"></script>

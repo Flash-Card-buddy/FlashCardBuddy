@@ -1,10 +1,11 @@
+{{#if loggedIn}}
 <section>
   <h2 class="new-deck-form"><a href="/dashboard/new/">Create a New Deck</a></h2>
 </section>
 
 {{#if deck.length}}
 <section>
-  <h2>Your deck</h2>
+  <p>Your {{format_plural "Deck" deck.length }}</p>
   <dt>
     {{#each deck as |deck|}}
   <dd>
@@ -14,4 +15,5 @@
   {{/each}}
   </dt>
 </section>
+{{/if}}
 {{/if}}

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { User, Comment, Card } = require('../../models');
+const { User, Comment, Card, Deck } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/', withAuth, (req, res) => {
@@ -14,14 +14,10 @@ router.get('/', withAuth, (req, res) => {
         'card_back'
       ],
       include: [
-        // {
-        //   model: Card,
-        //   attributes: ['id', 'deck_id', 'card_front', 'card_back'],
-        //   include: {
-        //     model: User,
-        //     attributes: ['username']
-        //   }
-        // },
+        {
+          model: Deck,
+          attributes: ["id", "user_id", "deck_name"]
+        },
         {
           model: User,
           attributes: ['username']
@@ -33,7 +29,8 @@ router.get('/', withAuth, (req, res) => {
         res.status(404).json({ message: 'No cards found' });
         return;
       }
-      res.render('new-card')
+      // res.render('new-card')
+      res.json(dbCardData)
     })
     .catch(err => {
       console.log(err);
@@ -55,14 +52,6 @@ router.get('/:id', withAuth, (req, res) => {
         'card_back'
       ],
       include: [
-        // {
-        //   model: Comment,
-        //   attributes: ['id', 'deck_id', 'created_at'],
-        //   include: {
-        //     model: User,
-        //     attributes: ['username']
-        //   }
-        // },
         {
           model: User,
           attributes: ['username']
@@ -74,7 +63,8 @@ router.get('/:id', withAuth, (req, res) => {
           res.status(404).json({ message: 'No cards found with this id' });
           return;
         }
-        res.render(dbCardData);
+        console.log("dbCardData", dbCardData)
+        res.json(dbCardData);
       })
       .catch(err => {
         console.log(err);
@@ -83,20 +73,24 @@ router.get('/:id', withAuth, (req, res) => {
   }
 });
 
-router.post('/', withAuth, (req, res) => { 
-  if(req.session) { 
-    Card.create({
-      id: req.body.id,
-      card_front: req.body.card_front,
-      card_back: req.body.card_back,
-      deck_id: req.body.deck_id
+router.post('/', withAuth, (req, res) => {  
+  console.log('route "/" hit')
+  console.log(req.body)
+   Card.create({
+    id: req.body.id,
+    card_front: req.body.card_front,
+    card_back: req.body.card_back,
+    deck_id: req.body.deck_id,
+    user_id: req.session.user_id
+  })
+    .then(dbCardData => {
+      console.log('route "/" hit', dbCardData)
+      res.json(dbCardData)
     })
-      .then(dbCardData => res.json(dbCardData))
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  }
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 router.put('/:id', withAuth, (req, res) => {
@@ -105,7 +99,7 @@ router.put('/:id', withAuth, (req, res) => {
       {
         card_front: req.body.card_front,
         card_back: req.body.card_back,
-        deck_id: req.session.deck_id
+        deck_id: req.body.deck_id
       },
       {
         where: {

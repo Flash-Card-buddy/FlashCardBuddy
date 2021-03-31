@@ -4,10 +4,10 @@ const User = require('./User');
 const Comment = require('./Comment');
 const Card = require('./Card');
 const { belongsTo } = require('./Deck');
-
+// const Friend = require('./Friend')
 
 // create associations
-
+// need to add Friend associations
 User.hasMany(Deck, {
   foreignKey: 'user_id'
 });
@@ -36,10 +36,25 @@ Deck.hasMany(Card, {
   foreignKey: 'deck_id'
 });
 
+User.hasMany(Card, {
+  foreignKey: 'user_id'
+});
+
+Card.belongsTo(User, {
+  foreignKey: 'user_id'
+});
+
 Card.belongsTo(Deck, {
   foreignKey: 'deck_id'
 });
 
 
+// Friend.belongsTo(User, {
+//   foreignKey: 'user_id'
+// })
+
+// User.hasMany(Friend, {
+//   foreignKey: 'friend_id'
+// })
 
 module.exports = { User, Deck, Comment, Card};

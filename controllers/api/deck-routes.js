@@ -34,6 +34,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', withAuth, (req, res) => {
+  console.log(req.params.id, "id")
   Deck.findOne({
     where: {
       id: req.params.id
@@ -67,6 +68,7 @@ router.get('/:id', withAuth, (req, res) => {
         res.status(404).json({ message: 'No deck found with this id' });
         return;
       }
+      console.log("dbDeckData",dbDeckData)
       res.json(dbDeckData);
     })
     .catch(err => {

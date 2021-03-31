@@ -79,6 +79,7 @@ router.get('/:id', withAuth, (req, res) => {
           res.status(404).json({ message: 'No cards found with this id' });
           return;
         }
+        console.log("dbCardData", dbCardData)
         res.json(dbCardData);
       })
       .catch(err => {

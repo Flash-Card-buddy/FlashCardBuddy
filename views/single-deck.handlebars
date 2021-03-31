@@ -1,26 +1,38 @@
 <section>
   <div>
     <h4>Your cards:</h4>
-    {{#with cards}}
-  <div class="flip-card">
-    <div class="flip-card-inner">
+   <button data-position={{position}}>Prev</button>
+       <button data-position={{position}} class="next" >Next</button>
+    {{#each decks }}
 
-    <div class="flip-card-front">
-      {{card_front}}   
+    <div data-position={{position}} class="flip-card">
+      <div class="flip-card-inner">
+
+        <div class="flip-card-front">
+
+         
+          {{dataValues.card_front}}
+        
+        </div>
+
+        <div class="flip-card-back">
+
+          {{dataValues.card_back}}
+
+        </div>
+
+      </div>
     </div>
 
-    <div class="flip-card-back">
-      {{card_back}}
-    </div>
 
-    </div>
+    {{/each}}
   </div>
-{{/with}}
-  </div>
+
+
 </section>
 
 {{#if loggedIn }}
-  
+
 
 <form class="comment-form">
   <div>
@@ -39,3 +51,49 @@
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
 {{/if}}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+  integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+  crossorigin="anonymous"></script>
+<script>
+
+
+var position = 0 
+  var status = "front"
+  $(".flip-card").on("click", function () {
+    if (status === "front") {
+      $(".flip-card-inner").attr("style", "transform: rotateY(180deg)")
+      status = "back"
+    }
+    else {
+      $(".flip-card-inner").attr("style", "transform: rotateY(360deg)")
+      status = "front"
+    }
+    console.log(status)
+
+  })
+
+  $(".next").on("click", function(){
+       position++
+      display(position)
+  })
+
+function display(value){
+  $(".flip-card").each(function(index){
+    
+    console.log(index, value)
+    if(index>value){
+     $(this).hide()
+    }
+    if(value>index){
+      $(this).show()
+    } else {
+      $(this).hide()
+    }
+  })
+
+}
+
+display(position)
+
+</script>

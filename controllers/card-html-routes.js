@@ -37,7 +37,7 @@ router.get('/:id', withAuth, (req, res) => {
 });
 
 router.get('/add/:deckId', withAuth, (req, res) => {
-  res.render('new-card');
+  res.render('new-card', {loggedIn:req.session.loggedIn});
 });
 
 module.exports = router;

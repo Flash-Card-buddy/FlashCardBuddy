@@ -47,7 +47,7 @@ router.get('/:id', withAuth, (req, res) => {
     });
 });
 
-router.post('/', withAuth, (req, res) => {  
+router.post('/',   (req, res) => {  
   User.create({
     username: req.body.username,
     email: req.body.email,
@@ -68,7 +68,7 @@ router.post('/', withAuth, (req, res) => {
     });
 });
 
-router.post('/login', withAuth, (req, res) => {  
+router.post('/login',  (req, res) => {  
   User.findOne({
     where: {
       email: req.body.email,

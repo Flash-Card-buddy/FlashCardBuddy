@@ -67,7 +67,7 @@ router.get("/deck/:id", (req, res) => {
       {
         model: User,
         attributes: ["username"],
-      }
+      },
     ],
   })
     .then((dbDeckData) => {

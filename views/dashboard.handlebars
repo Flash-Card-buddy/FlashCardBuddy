@@ -1,3 +1,4 @@
+{{#if loggedIn}}
 <section>
   <h2 class="new-deck-form"><a href="/dashboard/new/">Create a New Deck</a></h2>
 </section>
@@ -11,10 +12,8 @@
     {{> deck-info deck}}
     <a href="/dashboard/edit/{{deck.id}}" class="edit-link">Edit deck</a>
   </dd>
-  {{!-- <dd>
-    <a href="/dashboard/deck/{{deck.id}}/card">Add Card</a>
-  </dd> --}}
   {{/each}}
   </dt>
 </section>
+{{/if}}
 {{/if}}

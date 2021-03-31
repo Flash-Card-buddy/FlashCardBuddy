@@ -9,6 +9,6 @@ const commentRoutes = require('./comment-routes');
 router.use('/users', userRoutes);
 router.use('/deck', deckRoutes);
 router.use('/comments', commentRoutes);
-router.use('/cards', cardRoutes);
+router.use('/card', cardRoutes);
 
 module.exports = router;

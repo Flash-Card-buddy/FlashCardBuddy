@@ -3,7 +3,6 @@ const sequelize = require('../config/connection');
 //Provides requirement of being logged in (withAuth) to access certain features of blog
 const withAuth = require("../utils/auth");
 const { Deck, User, Comment, Card } = require("../models");
-
 //Prevents users from accessing Dashboard w/out being logged in
 router.get("/", withAuth, (req, res) => {
   Deck.findAll({

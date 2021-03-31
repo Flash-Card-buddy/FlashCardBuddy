@@ -1,12 +1,9 @@
 <div class="card">
-  {{#each this}}
-  <section class="card">
-    <div class="text">
-      {{card.card_front}}
-    </div>
-    <div class="text">
-      {{card.card_back}}
-    </div>
-  </section>
-  {{/each}}
+  <h4>{{deck_id deck_name}}</h4>
+  {{#with cards}}
+    <div class="card_front"> {{{card_front}}} </div>
+    <div class="card_back"> {{{card_back}}} </div>
+  {{/with}}
 </div>
+
+

@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 
+// Prevents username and PW from being pushed to GitHub
 require('dotenv').config();
 
 let sequelize;

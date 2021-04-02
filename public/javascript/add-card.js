@@ -21,11 +21,6 @@ async function saveCardHandler(event) {
     }
   });
 
-  //if (response.ok) {
-    //document.location.replace('/dashboard');
-  //} else {
-    //alert(response.statusText);
-  //}
 
   //This is new code that will allow the cards to keep being made until they are done making them
   if (response.ok) {

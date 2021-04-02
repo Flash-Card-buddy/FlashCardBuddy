@@ -184,4 +184,7 @@ footer a:hover {
     perspective: 1000px;
     padding: 5px;
   }
+  .comment-form {
+    display: none;
+  }
 }

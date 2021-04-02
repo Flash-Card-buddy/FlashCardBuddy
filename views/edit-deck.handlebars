@@ -10,9 +10,9 @@
     <div>      
       <a href="/deck/{{deck.id}}">{{deck.comments.length}} {{format_plural "comment" deck.comments.length}}</a>
     </div>
-    <button type="btn bg-primary submit">Save Deck</button>
+    <button id="saveDeck" type="button" class="btn bg-primary submit">Save Deck</button>
     <button type="button" class="delete-deck-btn btn bg-danger">Delete deck</button>
-    <a href="/card/add/{{id}}" class="btn bg-success">Add Card</a>
+    <button id="" type="button" class="btn bg-success">Add Card</button>
   </form>
 </article>
 

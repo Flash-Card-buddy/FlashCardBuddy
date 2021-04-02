@@ -1,11 +1,11 @@
 <section>
   <div>
     <h4>Your cards:</h4>
-    <button data-position={{position}} class="previous">Prev</button>
-    <button data-position={{position}} class="next">Next</button>
+    <button class="previous">Prev</button>
+    <button class="next">Next</button>
     {{#each decks }}
 
-    <div data-position={{position}} class="flip-card">
+    <div class="flip-card">
       <div class="flip-card-inner">
 
 
@@ -32,10 +32,10 @@
           </div>
 
         </div>
-
-
-        {{/each}}
       </div>
+
+      </div>
+    {{/each}}
 
 
 </section>
@@ -69,7 +69,9 @@
 
   var position = 0
   var status = "front"
-  $(".flip-card").on("click", function () {
+  
+  $(".flip-card").each(function () {
+  $(this).on("click", function () {
     if (status === "front") {
       $(".flip-card-inner").attr("style", "transform: rotateY(180deg)")
       status = "back"
@@ -81,11 +83,13 @@
     console.log(status)
 
   })
+  })
 
   $(".next").on("click", function () {
     position++
     display(position)
   })
+  
   $(".previous").on("click", function () {
     position--
     display(position)
@@ -108,5 +112,5 @@
   }
 
   display(position)
-
+ 
 </script>

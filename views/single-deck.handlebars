@@ -86,12 +86,21 @@
   })
 
   $(".next").on("click", function () {
-    position++
+    if (position === Array.cards - 1) {
+      position = 0
+    } else {
+      position++
+    }
     display(position)
   })
   
   $(".previous").on("click", function () {
-    position--
+    if(position === 0) {
+      // if index is 0 assign to the end of the array
+      position = Array.length
+    } else {
+      position --
+    }
     display(position)
   })
 

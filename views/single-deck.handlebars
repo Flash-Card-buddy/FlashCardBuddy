@@ -1,48 +1,41 @@
 <section>
   <div>
     <h4>Your cards:</h4>
-    <button data-position={{position}}>Prev</button>
+    <button data-position={{position}} class="previous">Prev</button>
     <button data-position={{position}} class="next">Next</button>
     {{#each decks }}
 
     <div data-position={{position}} class="flip-card">
       <div class="flip-card-inner">
 
-        {{!-- <div class="flip-card-front"> --}}
 
-          <div class="card flip-card-front">
-            <div class="card-header">
-              {{deck_name}}
-            </div>
-            <div class="card-body">
-              <p class="card-text"> {{dataValues.card_front}} </p>
 
-            </div>
-
+        <div class="card flip-card-front">
+          <div class="card-header">
+            {{dataValues.deck_name}}
           </div>
-        {{!-- </div> --}}
-
-        {{!-- <div class="flip-card-back"> --}}
-
-          <div class="card flip-card-back">
-            <div class="card-header">
-              {{deck_name}}
-            </div>
-            <div class="card-body">
-              <p class="card-text"> {{dataValues.card_back}} </p>
-
-            </div>
+          <div class="card-body">
+            <p class="card-text"> {{dataValues.card_front}} </p>
 
           </div>
 
-        {{!-- </div> --}}
+        </div>
 
+
+        <div class="card flip-card-back">
+          <div class="card-header">
+            {{deck_name}}
+          </div>
+          <div class="card-body">
+            <p class="card-text"> {{dataValues.card_back}} </p>
+
+          </div>
+
+        </div>
+
+
+        {{/each}}
       </div>
-    </div>
-
-
-    {{/each}}
-  </div>
 
 
 </section>
@@ -91,6 +84,10 @@
 
   $(".next").on("click", function () {
     position++
+    display(position)
+  })
+  $(".previous").on("click", function () {
+    position--
     display(position)
   })
 

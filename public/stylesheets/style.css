@@ -162,12 +162,10 @@ footer a:hover {
 }
 
 .flip-card-front {
-  /* background-color: rgb(24, 169, 189); */
   color: black;
 }
 
 .flip-card-back {
-  /* background-color: #0413a1; */
   color: black;
   transform: rotateY(180deg);
 }

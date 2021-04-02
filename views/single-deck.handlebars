@@ -1,12 +1,12 @@
 <section>
   <div>
     <h4>Your cards:</h4>
-    <button class="previous">Prev</button>
-    <button class="next">Next</button>
+    <button id="cardShow" class="previous">Prev</button>
+    <button id="cardShow" class="next">Next</button>
     {{#each decks }}
 
     <div class="flip-card">
-      <div class="flip-card-inner">
+      <div id="cardReveal" class="flip-card-inner">
 
 
 
@@ -69,21 +69,40 @@
 
   var position = 0
   var status = "front"
-  
-  $(".flip-card").each(function () {
-  $(this).on("click", function () {
-    if (status === "front") {
-      $(".flip-card-inner").attr("style", "transform: rotateY(180deg)")
-      status = "back"
-    }
-    else {
-      $(".flip-card-inner").attr("style", "transform: rotateY(360deg)")
-      status = "front"
-    }
-    console.log(status)
 
+
+  $(".flip-card").each(function () {
+    $(this).on("click", function () {
+      if (status === "front") {
+        $(".flip-card-inner").attr("style", "transform: rotateY(180deg)")
+        status = "back"
+      }
+      else {
+        $(".flip-card-inner").attr("style", "transform: rotateY(360deg)")
+        status = "front"
+      }
+      console.log(status)
+
+    })
   })
-  })
+
+  /*function cardCycle({
+  const hoopy = new Hoopy(i);
+    assert(Array.isArray(hoopy));
+
+    for (let i = 0; i < hoopy.length; ++i) {
+      hoopy[i] = i;
+      console.log(hoopy[i]);
+    }
+  })*/
+  function cardShow() {
+    var cardBody = document.getElementById("cardReveal");
+    if (cardBody.style.display === "none") {
+      cardBody.style.display = "block";
+    } else {
+      cardBody.style.display = "none";
+    }
+  }
 
   $(".next").on("click", function () {
     if (position === Array.cards - 1) {
@@ -94,18 +113,20 @@
     console.log(position);
     display(position)
   })
-  
+
   $(".previous").on("click", function () {
-    if(position === 0) {
+    if (position === 0) {
       // if index is 0 assign to the end of the array
       position = Array.length
     } else {
-      position --
+      position--
     }
     console.log(position);
     display(position)
   })
 
+
+  //Will be in charge of switching card status from hide to show
   function display(value) {
     $(".flip-card").each(function (index) {
 

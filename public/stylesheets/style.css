@@ -129,6 +129,7 @@ footer a:hover {
 .card {
   width: 450px;
   height: 250px;
+  padding: 0;
 }
 
 .card-footer {
@@ -173,7 +174,7 @@ footer a:hover {
 @media screen and (max-width: 768px) {
   .card {
     width: 250px;
-    height: 100px;
+    height: 150px;
   }
 
   .flip-card {

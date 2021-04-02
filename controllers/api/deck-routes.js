@@ -98,8 +98,7 @@ router.put('/:id', withAuth, (req, res) => {
         id: req.params.id
       }
     }
-    )
-    // I am not sure we need this here?
+    )    
     .then(dbDeckData => {
       Card.update(
         req.body[1],
@@ -108,8 +107,7 @@ router.put('/:id', withAuth, (req, res) => {
             deck_id: req.params.id
           }
         }
-      )
-      //this was card data?
+      )  
       .then(dbDeckData => {
         if (!dbDeckData) {
           res.status(404).json({ message: 'No deck found with this id' });

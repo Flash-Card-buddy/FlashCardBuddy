@@ -15,7 +15,9 @@ async function newFormHandler(event) {
   });
 
   if (response.ok) {
-    document.location.replace('/dashboard');
+    response.json()
+    .then(data => { document.location.replace('/card/add/' + data.id) })
+    console.log(data)
   } else {
     alert(response.statusText);
   }

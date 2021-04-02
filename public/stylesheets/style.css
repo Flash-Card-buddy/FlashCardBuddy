@@ -12,7 +12,6 @@ html {
   padding: 0;
   margin: 0;
   color: #ffffff;
-  background-color: var(--primary-color);
   position: relative;
 }
 
@@ -171,4 +170,19 @@ footer a:hover {
   /* background-color: #0413a1; */
   color: black;
   transform: rotateY(180deg);
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    width: 250px;
+    height: 100px;
+  }
+
+  .flip-card {
+    background-color: transparent;
+    width: 250px;
+    height: 100px;
+    perspective: 1000px;
+    padding: 5px;
+  }
 }

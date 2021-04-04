@@ -1,4 +1,4 @@
-async function editFormHandler(event) {
+async function editDeckHandler(event) {
   event.preventDefault();
 
   const deck = document.querySelector('input[name="deck-name"]').value.trim();
@@ -28,4 +28,4 @@ async function editFormHandler(event) {
   }
 }
 
-document.querySelector('.edit-deck-form').addEventListener('submit', editFormHandler);
+document.querySelector('#saveDeck').addEventListener('click', editDeckHandler);

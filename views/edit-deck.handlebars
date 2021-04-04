@@ -1,32 +1,33 @@
-<article>
+<section>
   <a href="/dashboard"> Back to Dashboard</a>
   <h2>
     Edit deck
   </h2>
   <form class="edit-deck-form">
     <div>
-      <input name="deck-name" type="text" value="{{deck.name}}" />      
+      <input name="deck-name" type="text" value="{{deck.name}}" />
     </div>
-    <div>      
+    {{!-- <div>
       <a href="/deck/{{deck.id}}">{{deck.comments.length}} {{format_plural "comment" deck.comments.length}}</a>
-    </div>
-    <button type="btn bg-primary submit">Save Deck</button>
+    </div> --}}
+    <button id="saveDeck" type="button" class="btn bg-primary submit">Save Deck</button>
     <button type="button" class="delete-deck-btn btn bg-danger">Delete deck</button>
-    <a href="/card/add/{{id}}" class="btn bg-success">Add Card</a>
+    <button id="saveCard" type="button" class="btn bg-success">Add Card</button>
   </form>
-</article>
 
 
-<form class="comment-form">
-  <div>
-    <textarea name="comment-body"></textarea>
-  </div>
+  {{!-- <form class="comment-form">
+    <div>
+      <textarea name="comment-body"></textarea>
+    </div>
 
-  <div>
-    <button type="submit">add comment</button>
-  </div>
-</form>
+    <div>
+      <button type="submit">add comment</button>
+    </div>
+  </form> --}}
+</section>
 
+<script src="/javascript/add-deck.js"></script>
 <script src="/javascript/edit-deck.js"></script>
 <script src="/javascript/delete-deck.js"></script>
-<script src="/javascript/comment.js"></script>
+{{!-- <script src="/javascript/comment.js"></script> --}}

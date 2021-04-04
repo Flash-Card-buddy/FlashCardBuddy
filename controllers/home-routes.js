@@ -1,11 +1,13 @@
 const router = require("express").Router();
-const sequelize = require('../config/connection');
+const sequelize = require("../config/connection");
 const { Deck, User, Comment, Card } = require("../models");
+let nextCounter = 0;
+let previousCounter = 0;
 
-const helpers = require('../utils/helpers');
-const exphbs = require('express-handlebars');
-const hbs = exphbs.create({helpers});
-var positionCounter=0
+const helpers = require("../utils/helpers");
+const exphbs = require("express-handlebars");
+const hbs = exphbs.create({ helpers });
+let positionCounter = 0;
 router.get("/", (req, res) => {
   Deck.findAll({
     attributes: ["id", "deck_name", "created_at"],
@@ -48,7 +50,6 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-
 router.get("/deck/:id", (req, res) => {
   Deck.findOne({
     where: {
@@ -65,8 +66,8 @@ router.get("/deck/:id", (req, res) => {
         },
       },
       {
-        model: Card, 
-        attributes: ['id', 'card_front', 'card_back', 'deck_id']
+        model: Card,
+        attributes: ["id", "card_front", "card_back", "deck_id"],
       },
       {
         model: User,
@@ -75,27 +76,44 @@ router.get("/deck/:id", (req, res) => {
     ],
   })
     .then((dbDeckData) => {
-
       if (!dbDeckData) {
         res.status(404).json({ message: "There's no deck found with that id" });
         return;
       }
-      positionCounter=0
-      hbs.handlebars.registerHelper('position', function() {
-      
+      positionCounter = 0;
+      nextCounter = 1;
+      previousCounter = 0;
+      hbs.handlebars.registerHelper("position", function () {
+        if (positionCounter >= dbDeckData.cards.length) {
+          return (positionCounter = dbDeckData.cards.length);
+        }
         return positionCounter++;
-    });
+      });
 
+      hbs.handlebars.registerHelper("nextPosition", function () {
+        if (nextCounter >= dbDeckData.cards.length) {
+          return (nextCounter = dbDeckData.cards.length - 1);
+        }
+
+        return nextCounter++;
+      });
+      hbs.handlebars.registerHelper("previousPosition", function () {
+        previousCounter = nextCounter - 1;
+        if (previousCounter < 0) {
+          return (previousCounter = 0);
+        }
+
+        return previousCounter;
+      });
 
       // serialize the data
       const deck = dbDeckData.get({ plain: true });
-      console.log("deck", deck.cards)
+      console.log("deck", deck.cards);
 
-     console.log(dbDeckData.cards[0].dataValues.card_front)
+      console.log(dbDeckData.cards[0].dataValues.card_front);
       // pass data to template
       res.render("single-deck", {
-       
-          decks : dbDeckData.cards,
+        decks: dbDeckData.cards,
         loggedIn: req.session.loggedIn,
       });
     })
@@ -104,6 +122,5 @@ router.get("/deck/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
-
 
 module.exports = router;

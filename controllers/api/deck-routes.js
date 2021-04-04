@@ -3,7 +3,7 @@ const sequelize = require('../../config/connection');
 const { Deck, User, Comment, Card } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
   console.log('======================');
   Deck.findAll({
     attributes: [
@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'deck_id', 'user_id'],
+        attributes: ['id', 'comment_text', 'deck_id', 'user_id', 'created_at'],
         include: {
           model: User,
           attributes: ['username']
@@ -47,7 +47,7 @@ router.get('/:id', withAuth, (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'deck_id', 'user_id'],
+        attributes: ['id', 'comment_text', 'deck_id', 'user_id', 'created_at'],
         include: {
           model: User,
           attributes: ['username']
@@ -68,7 +68,6 @@ router.get('/:id', withAuth, (req, res) => {
         res.status(404).json({ message: 'No deck found with this id' });
         return;
       }
-      console.log("dbDeckData",dbDeckData)
       res.json(dbDeckData);
     })
     .catch(err => {
@@ -79,7 +78,6 @@ router.get('/:id', withAuth, (req, res) => {
 
 router.post('/', withAuth, (req, res) => {  
   Deck.create({
-    id: req.body.id,
     deck_name: req.body.deck_name,
     user_id: req.session.user_id
   })
@@ -98,8 +96,7 @@ router.put('/:id', withAuth, (req, res) => {
         id: req.params.id
       }
     }
-    )
-    // I am not sure we need this here?
+    )    
     .then(dbDeckData => {
       Card.update(
         req.body[1],
@@ -108,8 +105,7 @@ router.put('/:id', withAuth, (req, res) => {
             deck_id: req.params.id
           }
         }
-      )
-      //this was card data?
+      )  
       .then(dbDeckData => {
         if (!dbDeckData) {
           res.status(404).json({ message: 'No deck found with this id' });

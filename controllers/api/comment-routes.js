@@ -1,23 +1,11 @@
 const router = require('express').Router();
 const withAuth = require('../../utils/auth');
-const { Comment, User } = require('../../models');
+const { Comment } = require('../../models');
 
 // GET /api/comments
-router.get('/', (req, res) => {
-    // Access our Comment model and run .findAll() method)
-    Comment.findAll({
-      attributes: [
-        'id',   
-        'deck_id',
-        'created_at'
-      ],
-      include: [
-        {
-          model: User,
-          attributes: ['username']
-        }
-      ]
-    })
+router.get('/', withAuth, (req, res) => {
+  Comment.findAll()
+  // Access our Comment model and run .findAll() method)
     .then(dbCommentData => res.json(dbCommentData))
     .catch(err => {
       console.log(err);
@@ -29,8 +17,8 @@ router.post('/', withAuth, (req, res) => {
   // check the session
   if (req.session) {
     Comment.create({
-      deck_id: req.body.deck_id,
       comment_text: req.body.comment_text,
+      deck_id: req.body.deck_id,
       // use the id from the session
       user_id: req.session.user_id
     })
@@ -42,7 +30,7 @@ router.post('/', withAuth, (req, res) => {
   }
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Comment.destroy({
       where: {
         id: req.params.id

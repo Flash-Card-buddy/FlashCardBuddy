@@ -1,65 +1,45 @@
 <section>
   <div>
-    <h4>Your cards:</h4>
-    <button id="cardShow" class="previous">Prev</button>
-    <button id="cardShow" class="next">Next</button>
     {{#each decks }}
 
-    <div class="flip-card">
-      <div id="cardReveal" class="flip-card-inner">
-
-
-
-        <div class="card flip-card-front">
-          <div class="card-header">
-            {{dataValues.deck_name}}
+    <div id={{position}} class="decker">
+      <button data-id={{previousPosition}} class="previous">Prev</button>
+      <button data-id={{nextPosition}} class="next">Next</button>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="card flip-card-front">
+            <div class="card-header">
+              
+            </div>
+            <div class="card-body">
+              <p class="card-text"> {{dataValues.card_front}} </p>
+            </div>
           </div>
-          <div class="card-body">
-            <p class="card-text"> {{dataValues.card_front}} </p>
-
+          <div class="card flip-card-back">
+            <div class="card-header">
+              {{deck_name}}
+            </div>
+            <div class="card-body">
+              <p class="card-text"> {{dataValues.card_back}} </p>
+            </div>
           </div>
-
-        </div>
-
-
-        <div class="card flip-card-back">
-          <div class="card-header">
-            {{deck_name}}
-          </div>
-          <div class="card-body">
-            <p class="card-text"> {{dataValues.card_back}} </p>
-
-          </div>
-
         </div>
       </div>
-
       </div>
+
     {{/each}}
-
+  </div>
 
 </section>
 
 {{#if loggedIn }}
 
 
-<form class="comment-form">
-  <div>
-    <textarea name="comment-body"></textarea>
-  </div>
 
-  <div>
-    <button type="submit">add comment</button>
-  </div>
-</form>
+
 {{/if}}
-
-{{> comments deck.comments}}
-
-
-{{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
-{{/if}}
+{{> comments deck.comments}}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
   integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
@@ -86,63 +66,48 @@
     })
   })
 
-  /*function cardCycle({
-  const hoopy = new Hoopy(i);
-    assert(Array.isArray(hoopy));
 
-    for (let i = 0; i < hoopy.length; ++i) {
-      hoopy[i] = i;
-      console.log(hoopy[i]);
-    }
-  })*/
-  function cardShow() {
-    var cardBody = document.getElementById("cardReveal");
-    if (cardBody.style.display === "none") {
-      cardBody.style.display = "block";
-    } else {
-      cardBody.style.display = "none";
-    }
-  }
+
 
   $(".next").on("click", function () {
-    if (position === Array.cards - 1) {
-      position = 0
-    } else {
-      position++
-    }
-    console.log(position);
-    display(position)
+
+    let next = parseInt($(this).attr("data-id"))
+    $("#" + next).show()
+    
+    next = next - 1
+    $("#" + next).hide()
+
+    
   })
 
   $(".previous").on("click", function () {
-    if (position === 0) {
-      // if index is 0 assign to the end of the array
-      position = Array.length
-    } else {
-      position--
-    }
-    console.log(position);
-    display(position)
+
+    let previous = parseInt($(this).attr("data-id"))
+    previous = previous - 1
+    $("#" + previous).show()
+    
+    previous = previous + 1
+    $("#" + previous).hide()
+
+    
   })
 
 
   //Will be in charge of switching card status from hide to show
   function display(value) {
-    $(".flip-card").each(function (index) {
+    $(".decker").each(function (index) {
 
       console.log(index, value)
       if (index > value) {
         $(this).hide()
       }
-      if (value > index) {
+      else {
         $(this).show()
-      } else {
-        $(this).hide()
       }
     })
 
   }
 
-  display(position)
- 
+  display(0)
+
 </script>

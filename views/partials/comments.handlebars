@@ -1,4 +1,4 @@
-<div class="comment">
+<div class="comments">
   {{#each this}}
   <section class="comment">
     <div class="meta">
@@ -9,4 +9,8 @@
     </div>
   </section>
   {{/each}}
+  
+  {{#if loggedIn}}
+  <script src="/javascript/comment.js"></script>  
+  {{/if}}
 </div>

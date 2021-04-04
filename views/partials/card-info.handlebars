@@ -1,9 +1,15 @@
-<div class="card">
-  <h4>{{deck_id deck_name}}</h4>
-  {{#with cards}}
-    <div class="card_front"> {{{card_front}}} </div>
-    <div class="card_back"> {{{card_back}}} </div>
-  {{/with}}
-</div>
+{{>deck-info deck}}
 
+{{#if loggedIn}}
+<form class="comment-form">
+  <div>
+    <textarea name="comment-body"></textarea>
+  </div>
 
+  <div>
+    <button type="submit">add a comment</button>
+  </div>
+</form>
+{{/if}}
+
+{{>comments deck.comments}}

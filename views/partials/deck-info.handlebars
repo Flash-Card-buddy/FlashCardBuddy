@@ -1,24 +1,21 @@
-<article class="deck">
+<section class="deck">
   <div class="name">
-    
-  
-    
-  </div>
   <div class="card container-fluid">
-  <div class="card-header">
-    {{deck_name}}
-  </div>
-  <div class="card-body mx-auto overflow-hidden">
-        <a href="/deck/{{id}}" class="btn bg-primary">Open Deck</a>
-    <p class="card-text"> {{card-info}} </p>
-
-  </div>
-    <div class="card-footer">
-    {{!-- <a href="/card/add/{{id}}" class="btn bg-success">Add Card</a> --}}
-    {{!-- <a href="/deck/{{id}}" class="btn bg-danger">Delete Deck</a> --}}
+    <div class="card-header">
+      <a text="{{deck_name}}" target="_blank">{{deck_name}}</a>
     </div>
-</div>
-  <div class="meta">
-    <p>{{comments.length}} {{format_plural "comment" comments.length}}</p>
+    <div class="card-body mx-auto overflow-hidden">
+      <a href="/deck/{{id}}" class="btn bg-primary">Open Deck</a>
+      <p class="card-text"> {{card-info}} </p>
+
+    </div>
+    <div class="card-footer">
+
+    </div>
   </div>
-</article>
+  <div class="meta">
+    <a href="/deck/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+    
+  </div>
+  </div>
+</section>

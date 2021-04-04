@@ -21,6 +21,10 @@ router.get('/', withAuth, (req, res) => {
         {
           model: User,
           attributes: ['username']
+        },
+        {
+          model: Comment,
+          attributes: ["id", "comment_text", "user_id", "created_at"]
         }
       ]
     })
@@ -55,6 +59,14 @@ router.get('/:id', withAuth, (req, res) => {
         {
           model: User,
           attributes: ['username']
+        },
+        {
+          model: Deck,
+          attributes: ['deck_name']
+        },
+        {
+          model: Comment,
+          attributes: ["id", "comment_text", "user_id", "created_at"]
         }
       ]
     })

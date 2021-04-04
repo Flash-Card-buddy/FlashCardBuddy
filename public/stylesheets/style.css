@@ -191,5 +191,9 @@ footer a:hover {
   .card-text {
     font-size: 12px;
   }
+
+  .card-body {
+    padding-top: 5px;
+  }
   
 }

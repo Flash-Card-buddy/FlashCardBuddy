@@ -1,34 +1,75 @@
+<h1 align="center">Flash Card Buddy</h1>
+  
+  <p align="center">
+    <img src="https://img.shields.io/github/repo-size/Flash-Card-buddy/FlashCardBuddy?style=plastic" />
+    <img src="https://img.shields.io/github/languages/count/Flash-Card-buddy/FlashCardBuddy?style=plastic" />
+    <img src="https://img.shields.io/github/languages/top/Flash-Card-buddy/FlashCardBuddy?style=plastic" />
+    <img src="https://img.shields.io/github/last-commit/Flash-Card-buddy/FlashCardBuddy?style=plastic" />
+  </p>
 
-# Project Requirements
+  <p align="center">
+    <img src="https://img.shields.io/badge/bcrypt-black">
+    <img src="https://img.shields.io/badge/Javascript-gold">
+    <img src="https://img.shields.io/badge/Connect Session Sequelize-cyan">
+    <img src="https://img.shields.io/badge/-dotenv-yellow">
+    <img src="https://img.shields.io/badge/Express-grey">
+    <img src="https://img.shields.io/badge/-Express Handlebars-orange">
+    <img src="https://img.shields.io/badge/Express Session-c12127">
+    <img src="https://img.shields.io/badge/-MySQL2-purple">
+    <img src="https://img.shields.io/badge/-Sequelize-blue">
+    <img src="https://img.shields.io/badge/-serve favicon-26acac">
+    
+  </p>
+  
+  ## Description
+  ❓  A user friendly flash card app that allows new and existing users to create flash cards they can use to study various topics, store recipes, or even simply create their own fun trivia!
 
-* Use Node.js and Express.js to create a RESTful API
+![Demo](./src/demo.gif)
 
-* Use a template engine, such as Handlebars.js
+## Table of Contents
 
-* Use MySQL and the Sequelize ORM for the database
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributors](#contributors)
+- [Questions](#questions)
 
-* Have both GET and POST routes for retrieving and adding new data
+## Installation
 
-* Be deployed using Heroku (with data)
+🚨 You will need download the application files, create a MySQL database, and install the following dependencies:<br />
+`npm init i`<br />
 
-* Utilize at least one new library, package, or technology that we haven’t discussed
+## GitHub Repository Link:
 
-* Have a polished UI.
+> https://github.com/Flash-Card-buddy/FlashCardBuddy
 
-* Be responsive.
+## Usage
 
-* Be interactive (i.e., accept and respond to user input).
+> https://flash-card-buddy.herokuapp.com/
 
-* Must have a folder structure that meets the MVC paradigm
+## License
 
-* Must include authentication (cookies and express-session)
+![badge](https://img.shields.io/badge/license-MIT-success)
+<br />
+This application is covered by the MIT license.
 
-* Must protect API keys and sensitive information with environment variables
+## 👥Contributors:
 
-* Have a clean repository that meets quality coding standards (file structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality comments, etc.).
+:octocat: [Benjamin Stanfield](https://github.com/bstanfield1992)<br />
 
-* Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
+:octocat: [Cori Cathemer](https://github.com/coricathemer)<br />
 
-Finally, you must add your project to the portfolio that you created in Module 2.
+:octocat: [Dan Arbelo](https://github.com/govepitr)<br />
 
-**More details about the project will be provided in the lessons for Module 15 in Canvas.**
+:octocat: [Devannah Medina](https://github.com/MedinaD2)<br />
+
+## Questions
+
+:question: You may reach out to me at the below links:<br />
+<br />
+:octocat: Find me on GitHub: [Govepitr](https://github.com/Govepitr)<br />
+<br />
+📜 Feel free to email me with any questions: dan@arbelo.me<br /><br />
+
+_This README was generated with the power of 💞 by ✨[Professional README Generator](https://github.com/Govepitr/ProfessionalREADMEGenerator) 🤘 🤘 🤘_

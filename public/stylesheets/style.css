@@ -174,7 +174,7 @@ footer a:hover {
 @media screen and (max-width: 768px) {
   .card {
     width: 250px;
-    height: 150px;
+    height: 100px;
   }
 
   .flip-card {
@@ -187,4 +187,9 @@ footer a:hover {
   .comment-form {
     display: none;
   }
+
+  .card-text {
+    font-size: 12px;
+  }
+  
 }

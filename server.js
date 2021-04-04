@@ -6,7 +6,7 @@ const helpers = require('./utils/helpers');
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({helpers});
 const session = require('express-session');
-const Hoopy = require('hoopy');
+
 var favicon = require('serve-favicon');
 
 
@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '/public')));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-app.set(Array.isArray('hoopy'));
+
 
 
 hbs.handlebars.registerHelper("with", function(context, options) {

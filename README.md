@@ -62,7 +62,6 @@ This application is covered by the MIT license.
 
 :octocat: [Dan Arbelo](https://github.com/govepitr)<br />
 
-:octocat: [Devannah Medina](https://github.com/MedinaD2)<br />
 
 ## Questions
 
